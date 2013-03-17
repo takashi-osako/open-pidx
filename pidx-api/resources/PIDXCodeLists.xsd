@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.pidx.org/schemas/v1.51" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:pidx="http://www.pidx.org/schemas/v1.51" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.51">
+	<annotation>
+		<documentation>
+					Schema Name:		PIDXCodeLists
+					Schema Purpose:	Include file used by PIDXlib.xsd
+					Document ID: 		01-469-10-25-2007 
+					
+					© PIDX, Inc. 2012
+					Use of this copyrighted material is subject to the PIDX End User License Agreement available at
+					www.pidx.org/license. Each user agrees to such End User License Agreement by making any use
+					of the copyrighted material.
+					
+					This document was prepared and is maintained in accordance with the PIDX Procedures for Standards
+					Development, a copy of which is available at www.pidx.org/procedures, and the PIDX Antitrust Guidelines, 
+					a copy of which is available at www.pidx.org/antitrust.
+					
+					Schema Version Number:	1.51 
+					Version Date: 				2012-01-11
+					Change Management Log:
+					Version		Person					Date			Description
+					Sep2007	Original					2007-09-15		From Sep2007 release
+					1.51		PIDX BMWG				2012-01-11		Transfer to PIDX, Inc.
+		</documentation>
+	</annotation>
+	<element name="CountryCode" type="string"/>
+	<element name="CurrencyCode" type="string">
+		<annotation>
+			<documentation>Code representing the currency in which monetary amounts are expressed.</documentation>
+		</annotation>
+	</element>
+	<simpleType name="AccompanyingSampleCodeType">
+		<annotation>
+			<documentation>Indicator whether or not a product sample should accompany shipment.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="NoAccompanyingSample"/>
+			<enumeration value="SampleSentWithShipment"/>
+			<enumeration value="SampleSentBeforeShipment"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AdditizedCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="AdditizedTypeNotDetermined"/>
+			<enumeration value="AdditizedWithProprietaryAdditive"/>
+			<enumeration value="AdditizedWithGenericAdditive"/>
+			<enumeration value="NotAdditized"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AllowanceOrChargeIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Allowance"/>
+			<enumeration value="Charge"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AllowanceOrChargeTypeCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Freight"/>
+			<enumeration value="FuelSurcharge"/>
+			<enumeration value="SpecialHandlingService"/>
+			<enumeration value="Discount"/>
+			<enumeration value="FlatRate"/>
+			<enumeration value="EngineeringCharge"/>
+			<enumeration value="InvoiceAdjustment"/>
+			<enumeration value="InsuranceSurcharge"/>
+			<enumeration value="OneTimeLicenseFee"/>
+			<enumeration value="Royalties"/>
+			<enumeration value="MiscellaneousCharge"/>
+			<enumeration value="PostageCharge"/>
+			<enumeration value="TrailerRentalCharge"/>
+			<enumeration value="TransportationDirectBilling"/>
+			<enumeration value="TransportationVendorProvided"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AlternativeCommunicationMethodIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="AUTOVON"/>
+			<enumeration value="EDIAccessNumber"/>
+			<enumeration value="FederalTelecommunicationsSystem"/>
+			<enumeration value="IPAddress"/>
+			<enumeration value="PacketSwitching"/>
+			<enumeration value="PrinterID"/>
+			<enumeration value="StationCode"/>
+			<enumeration value="Telemail"/>
+			<enumeration value="Telex"/>
+			<enumeration value="TWX"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AssigningOrganizationType">
+		<annotation>
+			<documentation>The organization who assigns a particular identifier for a product or partner.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="AssignedByBuyer"/>
+			<enumeration value="AssignedByManufacturer"/>
+			<enumeration value="AssignedByMarketplace"/>
+			<enumeration value="AssignedBySupplier"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AttachmentPurposeCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Template"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="BatchNumberCreatorType">
+		<annotation>
+			<documentation>Identifies the creator of the batch number.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="Manufacturer"/>
+			<enumeration value="Seller"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="BlendOrAlterationCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="NoBlendOrAlteration"/>
+			<enumeration value="TruckBlendedWithAnotherProduct"/>
+			<enumeration value="ContainsAdditive"/>
+			<enumeration value="BlendedAndContainsAdditive"/>
+			<enumeration value="ContainsDetergentAdditive"/>
+			<enumeration value="BlendedAndContainsDetergentAdditive"/>
+			<enumeration value="24HourBlend"/>
+			<enumeration value="ContainsIVD_DetergentAdditive"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CommunicationMethodType">
+		<annotation>
+			<documentation>Identifies which kind of communication is beging given.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="IPAddress"/>
+			<enumeration value="PrinterID"/>
+			<enumeration value="StationCode"/>
+			<enumeration value="Telex"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ContactIdentifierIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="AssignedByBuyer"/>
+			<enumeration value="AssignedBySeller"/>
+			<enumeration value="AssignedByCarrier"/>
+			<enumeration value="AssignedByConsignee"/>
+			<enumeration value="AssignedByShipper"/>
+			<enumeration value="AssignedBySupplier"/>
+			<enumeration value="AssignedByTankage"/>
+			<enumeration value="AssignedByThirdParty"/>
+			<enumeration value="EmployeeID"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ContactInformationIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="BuyerDepartment"/>
+			<enumeration value="DeliveryContact"/>
+			<enumeration value="DesignEngineer"/>
+			<enumeration value="Engineer"/>
+			<enumeration value="EnteredBy"/>
+			<enumeration value="FieldRepresentative"/>
+			<enumeration value="OfficeRepresentative"/>
+			<enumeration value="OrderContact"/>
+			<enumeration value="PurchasingAgent"/>
+			<enumeration value="QuotePreparer"/>
+			<enumeration value="QuoteRequestor"/>
+			<enumeration value="RFQContact"/>
+			<enumeration value="SalesRepresentative"/>
+			<enumeration value="ServiceCoordinator"/>
+			<enumeration value="TechnicalMarketingRepresentative"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CurrencyOrderType">
+		<annotation>
+			<documentation>Identifies if a currency is primary, secondary, or tertiary.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="Primary"/>
+			<enumeration value="Secondary"/>
+			<enumeration value="Tertiary"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CustodyTicketType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Meter"/>
+			<enumeration value="Gauge"/>
+			<enumeration value="NetBarrels"/>
+			<enumeration value="EstimatedBarrels"/>
+			<enumeration value="Weight"/>
+			<enumeration value="TotalLeaseVolume"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DateTypeIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="ArriveLocationDate"/>
+			<enumeration value="InvoiceDueDate"/>
+			<enumeration value="InvoicePeriodStartDate"/>
+			<enumeration value="LeaveLocationDate"/>
+			<enumeration value="PromisedForDelivery"/>
+			<enumeration value="PromisedForShipment"/>
+			<enumeration value="RequestedForDelivery"/>
+			<enumeration value="RequestedShipment"/>
+			<enumeration value="ServicePeriodEnd"/>
+			<enumeration value="ServicePeriodStart"/>
+			<enumeration value="ShippedDate"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DesiredPreflushSpaceType">
+		<restriction base="NMTOKEN">
+			<enumeration value="None"/>
+			<enumeration value="Preflush"/>
+			<enumeration value="Flush"/>
+			<enumeration value="Spacer"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EquipmentLoadEmptyStatusType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Empty"/>
+			<enumeration value="Loaded"/>
+			<enumeration value="Partial"/>
+			<enumeration value="Unknown"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="FungibleSegregatedCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Fungible"/>
+			<enumeration value="Segregated"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="GravityCodeType">
+		<annotation>
+			<documentation>Specifies the type of gravity.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="API">
+				<annotation>
+					<documentation>Used to 'spread out' the specific gravity.</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="Specific">
+				<annotation>
+					<documentation>Specifies the relative density based on water.</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="IdentifierIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="AssignedByBuyer"/>
+			<enumeration value="AssignedByManufacturer"/>
+			<enumeration value="AssignedBySeller"/>
+			<enumeration value="CatalogueNumber"/>
+			<enumeration value="UPCNumber"/>
+			<enumeration value="AssignedByCarrier"/>
+			<enumeration value="AssignedByConsignee"/>
+			<enumeration value="AssignedByShipper"/>
+			<enumeration value="AssignedBySupplier"/>
+			<enumeration value="AssignedByTankage"/>
+			<enumeration value="AssignedByThirdParty"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="InstructionIndicatorType">
+		<annotation>
+			<documentation>Identifies what kind of special instruction is being given.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="CarrierInstructions"/>
+			<enumeration value="ConsigneeInstructions"/>
+			<enumeration value="DriverInstructions"/>
+			<enumeration value="EmptyReturnInstructions"/>
+			<enumeration value="InspectionsInstructions"/>
+			<enumeration value="RoutingInstructions"/>
+			<enumeration value="ShipperInstructions"/>
+			<enumeration value="ShortLeadTime"/>
+			<enumeration value="ShortLeadTimeInstructions"/>
+			<enumeration value="Tolerances"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="InvoiceTypeCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="CreditMemo"/>
+			<enumeration value="DebitMemo"/>
+			<enumeration value="ProductOrService"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ItemDetailChangeCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Add"/>
+			<enumeration value="Delete"/>
+			<enumeration value="ModifyPrice"/>
+			<enumeration value="ModifyQuantity"/>
+			<enumeration value="ModifyLocation"/>
+			<enumeration value="ModifyPartner"/>
+			<enumeration value="ModifyPaymentTerms"/>
+			<enumeration value="ModifyTransportInformation"/>
+			<enumeration value="ModifyScheduleDates"/>
+			<enumeration value="ModifyStatus"/>
+			<enumeration value="ModifyOther"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="JobLocationClassCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="FederalWaters"/>
+			<enumeration value="InlandWaters"/>
+			<enumeration value="Land"/>
+			<enumeration value="StateWaters"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="JobLocationIdentifierIndicator">
+		<restriction base="NMTOKEN">
+			<enumeration value="ChemicalPlant"/>
+			<enumeration value="CoalDe-Gas"/>
+			<enumeration value="CogenerationPlant"/>
+			<enumeration value="Construction"/>
+			<enumeration value="Dock"/>
+			<enumeration value="GasPlant"/>
+			<enumeration value="IndustrialServiceMiscellaneous"/>
+			<enumeration value="MilitaryGovernment"/>
+			<enumeration value="PaperMill"/>
+			<enumeration value="PetroleumPlant"/>
+			<enumeration value="Pipeline"/>
+			<enumeration value="Refinery"/>
+			<enumeration value="Rig"/>
+			<enumeration value="UtilityPlant"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="JobLocationStatusType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Active"/>
+			<enumeration value="Inactive"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="JobSiteCategoryType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Boiler"/>
+			<enumeration value="CivilHighways"/>
+			<enumeration value="Compression"/>
+			<enumeration value="Condenser"/>
+			<enumeration value="ConstructPiles"/>
+			<enumeration value="Dams"/>
+			<enumeration value="HeatExchanger"/>
+			<enumeration value="IndustrialServiceMiscellaneous"/>
+			<enumeration value="Piping"/>
+			<enumeration value="Production"/>
+			<enumeration value="TowerVessel"/>
+			<enumeration value="Turbine"/>
+			<enumeration value="UndergroundStr"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="JobType">
+		<restriction base="NMTOKEN">
+			<enumeration value="SurfaceCasing"/>
+			<enumeration value="ConductorCasing"/>
+			<enumeration value="Intermediate"/>
+			<enumeration value="Liner"/>
+			<enumeration value="Production"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="LineRequestedActionType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Add"/>
+			<enumeration value="Delete"/>
+			<enumeration value="Modify"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="LineStatusCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Accept"/>
+			<enumeration value="Pending"/>
+			<enumeration value="Reject"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="LocationIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="FreightEqualizationPoint"/>
+			<enumeration value="OnVessel-FOBPoint"/>
+			<enumeration value="Origin-AfterLoadingOnEquipment"/>
+			<enumeration value="Origin-ShippingPoint"/>
+			<enumeration value="Plant"/>
+			<enumeration value="ShippingDestination"/>
+			<enumeration value="Warehouse"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="LocationStatusType">
+		<restriction base="NMTOKEN">
+			<enumeration value="ExistingLocation"/>
+			<enumeration value="NewLocation"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="MethodOfHandlingCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="ChargeToBePaidByCustomer"/>
+			<enumeration value="OffInvoice"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="NotificationCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="AwardedBid"/>
+			<enumeration value="NotAwardedBid"/>
+			<enumeration value="OrderToFollow"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PackaginCharacteristicCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="PackageSpecifications"/>
+			<enumeration value="ProductMarking"/>
+			<enumeration value="SkidPalletType"/>
+			<enumeration value="TypeOfPackage"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PartnerDefinedMeasureIdentifierIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="AssignedByBuyer"/>
+			<enumeration value="AssignedBySeller"/>
+			<enumeration value="AssignedByCarrier"/>
+			<enumeration value="AssignedByConsignee"/>
+			<enumeration value="AssignedByShipper"/>
+			<enumeration value="AssignedBySupplier"/>
+			<enumeration value="AssignedByTankage"/>
+			<enumeration value="AssignedByThirdParty"/>
+			<enumeration value="AssignedByAmericanPetroleumInstitute"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PartnerIdentifierIndicatorType">
+		<restriction base="string">
+			<enumeration value="AssignedByBuyer"/>
+			<enumeration value="AssignedByCarrier"/>
+			<enumeration value="AssignedByConsignee"/>
+			<enumeration value="AssignedByManufacturer"/>
+			<enumeration value="AssignedByMarketplace"/>
+			<enumeration value="AssignedBySeller"/>
+			<enumeration value="AssignedByShipper"/>
+			<enumeration value="AssignedBySupplier"/>
+			<enumeration value="AssignedByTankage"/>
+			<enumeration value="AssignedByThirdParty"/>
+			<enumeration value="DUNS+4Number"/>
+			<enumeration value="DUNSNumber"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PartnerRoleIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="BillAndShipTo"/>
+			<enumeration value="BillTo"/>
+			<enumeration value="Carrier"/>
+			<enumeration value="CommissionPayee"/>
+			<enumeration value="Consignee"/>
+			<enumeration value="ConnectingCarrier"/>
+			<enumeration value="FinalRecipient"/>
+			<enumeration value="Grantor"/>
+			<enumeration value="Manufacturer"/>
+			<enumeration value="Marketplace"/>
+			<enumeration value="MaterialIssuer"/>
+			<enumeration value="OnsiteContractingCompany"/>
+			<enumeration value="OperatingCompany"/>
+			<enumeration value="Payer"/>
+			<enumeration value="PrimaryContractor"/>
+			<enumeration value="RemitTo"/>
+			<enumeration value="Seller"/>
+			<enumeration value="ShipFromParty"/>
+			<enumeration value="ShipToParty"/>
+			<enumeration value="Shipper"/>
+			<enumeration value="SoldTo"/>
+			<enumeration value="Supplier"/>
+			<enumeration value="Tankage"/>
+			<enumeration value="ThirdParty"/>
+			<enumeration value="Vendor"/>
+			<enumeration value="Warehouse"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PartnerRoleType">
+		<annotation>
+			<documentation>The role a particular partner plays in this transaction.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="BeneficialOwner"/>
+			<enumeration value="BillTo"/>
+			<enumeration value="Buyer"/>
+			<enumeration value="CareOfParty"/>
+			<enumeration value="Carrier"/>
+			<enumeration value="CommodityBroker"/>
+			<enumeration value="Consignee"/>
+			<enumeration value="CrewLeader"/>
+			<enumeration value="CustomerRepOnLocation"/>
+			<enumeration value="CustomsBroker"/>
+			<enumeration value="DocumentDeliverParty"/>
+			<enumeration value="FreightForwarder"/>
+			<enumeration value="Inspection"/>
+			<enumeration value="Manufacturer"/>
+			<enumeration value="Marketplace"/>
+			<enumeration value="NotifyParty"/>
+			<enumeration value="OrderedBy"/>
+			<enumeration value="Payer"/>
+			<enumeration value="Receiver"/>
+			<enumeration value="RemitTo"/>
+			<enumeration value="Rig"/>
+			<enumeration value="Seller"/>
+			<enumeration value="Sender"/>
+			<enumeration value="Shipper"/>
+			<enumeration value="ShipFrom"/>
+			<enumeration value="ShipTo"/>
+			<enumeration value="SoldTo"/>
+			<enumeration value="TransportationBroker"/>
+			<enumeration value="UlitmateConsignee"/>
+			<enumeration value="Well"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PaymentTermsBasisDateCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="DeliveryDate"/>
+			<enumeration value="InvoiceDate"/>
+			<enumeration value="InvoiceReceiptDate"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PhoneType">
+		<annotation>
+			<documentation>Identifies what kind of phone number is being given.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="Fax"/>
+			<enumeration value="Mobile"/>
+			<enumeration value="Pager"/>
+			<enumeration value="Voice"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PipelineEventType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Delivery"/>
+			<enumeration value="GainInLine"/>
+			<enumeration value="Hold"/>
+			<enumeration value="InventoryIntoShipper"/>
+			<enumeration value="InventoryOutOfShipper"/>
+			<enumeration value="Junction"/>
+			<enumeration value="LossInLine"/>
+			<enumeration value="OutOfHold"/>
+			<enumeration value="ProductTransferIn"/>
+			<enumeration value="ProductTransferOut"/>
+			<enumeration value="Receipt"/>
+			<enumeration value="ShortInTank"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PipelineEventVolumeAffectType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Increase"/>
+			<enumeration value="Decrease"/>
+			<enumeration value="Neutral"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PipelineNominationChangeCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Add"/>
+			<enumeration value="Delete"/>
+			<enumeration value="ModifyBatch"/>
+			<enumeration value="ModifyDetail"/>
+			<enumeration value="ModifyStatus"/>
+			<enumeration value="ModifyNomination"/>
+			<enumeration value="ModifyOther"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PriceType">
+		<annotation>
+			<documentation>Indicates whether a price is gross or net.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="Gross"/>
+			<enumeration value="Net"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PurchaseOrderTypeCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Confirmation"/>
+			<enumeration value="EmergencyOrder"/>
+			<enumeration value="ReleaseOrDeliveryOrder"/>
+			<enumeration value="RushOrder"/>
+			<enumeration value="StandAloneOrder"/>
+			<enumeration value="SupplyOrServiceOrder"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="QuantityUnitOfMeasurementCodeType">
+		<annotation>
+			<documentation>Indicator defining the measurement used. Code values in this list are contained within the UN/CEFACT Rec. 20 Unit of Measure code list (available at: http://www.unece.org/cefact/codesfortrade/rec20.xml). Code value descriptions from that list are as follows:
+BLL - barrels (US)
+CMQ - cubic centimeters
+GLL = gallons (US)
+LBR = pounds
+LTR - litres
+STN - net tons</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="BLL"/>
+			<enumeration value="CMQ"/>
+			<enumeration value="GLL"/>
+			<enumeration value="LBR"/>
+			<enumeration value="LTR"/>
+			<enumeration value="STN"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="QuoteTypeCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="AlternateBid"/>
+			<enumeration value="BidWithoutException"/>
+			<enumeration value="DeclineToQuote"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ResponseReasonType">
+		<restriction base="string">
+			<enumeration value="Accept With Changes"/>
+			<enumeration value="Already Acknowledged"/>
+			<enumeration value="Backorder"/>
+			<enumeration value="Credit Hold"/>
+			<enumeration value="Export Restricted"/>
+			<enumeration value="Insufficient Inventory"/>
+			<enumeration value="Invalid Bill To"/>
+			<enumeration value="Invalid Buyer ID"/>
+			<enumeration value="Invalid Configuration"/>
+			<enumeration value="Invalid Price List"/>
+			<enumeration value="Invalid Product"/>
+			<enumeration value="Invalid Quote Reference"/>
+			<enumeration value="Invalid Ship To"/>
+			<enumeration value="Not Authorized To Sell"/>
+			<enumeration value="Part Replacement"/>
+			<enumeration value="Part Substitution"/>
+			<enumeration value="Pending"/>
+			<enumeration value="Product Already Shipped"/>
+			<enumeration value="Reject - Not Within Cancellation Window"/>
+			<enumeration value="Reject - Non-cancel/Non-returnable"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="RoutingSequenceCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="OriginDeliveryCarrier-AnyMode"/>
+			<enumeration value="OriginCarrier-AirMotorOcean"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="RangeType">
+		<annotation>
+			<documentation>Indicates what kind of date time range is being given.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="EffectiveDates"/>
+			<enumeration value="EffectiveTaxDates"/>
+			<enumeration value="ServiceDates"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ReferenceInformationIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="AFENumber"/>
+			<enumeration value="BatchNumber"/>
+			<enumeration value="BillOfLading"/>
+			<enumeration value="Certification"/>
+			<enumeration value="CertifiedInspectionTestResults"/>
+			<enumeration value="ConfigurationNumber"/>
+			<enumeration value="ContractNumber"/>
+			<enumeration value="CostAllocationReference"/>
+			<enumeration value="CostCenter"/>
+			<enumeration value="CustomerAccountingReference"/>
+			<enumeration value="CustomerReferenceNumber"/>
+			<enumeration value="DeliveryTicketNumber"/>
+			<enumeration value="DivisionIdentifier"/>
+			<enumeration value="EngineeringChangeOrderNumber"/>
+			<enumeration value="JobNumber"/>
+			<enumeration value="LetterOfCreditNumber"/>
+			<enumeration value="LocationNumber"/>
+			<enumeration value="MaterialSafetyDataSheet"/>
+			<enumeration value="OperatorGeneralLedgerCode"/>
+			<enumeration value="OriginalInvoiceNumber"/>
+			<enumeration value="PriceAreaNumber"/>
+			<enumeration value="ProjectNumber"/>
+			<enumeration value="ProposaNumber"/>
+			<enumeration value="QuoteNumber"/>
+			<enumeration value="RequestForQuotationNumber"/>
+			<enumeration value="TemplateNumber"/>
+			<enumeration value="ShipperNominationNumber"/>
+			<enumeration value="ShipperNominationLineItemNumber"/>
+			<enumeration value="Other"/>
+			<enumeration value="CarrierNominationNumber"/>
+			<enumeration value="CarrierNominationLineItemNumber"/>
+			<enumeration value="MarketplaceNominationNumber"/>
+			<enumeration value="MarketplaceNominationLineItemNumber"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ReferenceType">
+		<annotation>
+			<documentation>Identifies what kind of document is being referenced.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="AppointmentNumber"/>
+			<enumeration value="Authorization"/>
+			<enumeration value="BookingNumber"/>
+			<enumeration value="ContractNumber"/>
+			<enumeration value="CustomerMasterRecordNumber"/>
+			<enumeration value="CustomerOrderNumber"/>
+			<enumeration value="DeliveryNote"/>
+			<enumeration value="LineItemNumber"/>
+			<enumeration value="LetterOfCredit"/>
+			<enumeration value="LoadPlanningNumber"/>
+			<enumeration value="PickUpNumber"/>
+			<enumeration value="PRONumber"/>
+			<enumeration value="PurchaseOrderNumber"/>
+			<enumeration value="RequestForQuoteNumber"/>
+			<enumeration value="RequisitionNumber"/>
+			<enumeration value="SalesOrderReference"/>
+			<enumeration value="ShipmentIdentifier"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ResponseReasonCodeType">
+		<annotation>
+			<documentation>Specifies the reason for the response message being returned. </documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Missing Content"/>
+			<enumeration value="Disputed Content"/>
+			<enumeration value="Routing Error"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ShipmentMethodOfPaymentType">
+		<annotation>
+			<documentation>Payment terms for transportation charges.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="Collect"/>
+			<enumeration value="Collect-FreightCreditedBackToCustomer"/>
+			<enumeration value="ServiceFreight-NoCharge"/>
+			<enumeration value="CustomerPickupBackhaul"/>
+			<enumeration value="Prepaid-ChargedToCustomer"/>
+			<enumeration value="PrepaidBySeller"/>
+			<enumeration value="Pickup"/>
+			<enumeration value="ThirdPartyPay"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SpecialInvoicePreferenceType">
+		<restriction base="NMTOKEN">
+			<enumeration value="InvoiceNotRequired"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Accept"/>
+			<enumeration value="Pending"/>
+			<enumeration value="Reject"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SubTotalIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Equipment"/>
+			<enumeration value="Labor"/>
+			<enumeration value="Materials"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TaxExemptCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Exempt"/>
+			<enumeration value="NonExempt"/>
+			<enumeration value="DirectPay"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TaxTypeCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="CountyParishSalesTax"/>
+			<enumeration value="CitySalesTax"/>
+			<enumeration value="CountyTax"/>
+			<enumeration value="FederalExciseTax"/>
+			<enumeration value="GrossReceiptsTax"/>
+			<enumeration value="GoodsAndServicesTax"/>
+			<enumeration value="LocalTax"/>
+			<enumeration value="StateAndLocalSalesTax"/>
+			<enumeration value="MetropolitanTransitTax"/>
+			<enumeration value="StateProvincialTax"/>
+			<enumeration value="StateSalesTax"/>
+			<enumeration value="ValueAddedTax"/>
+			<enumeration value="WellServiceTax"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TemperatureUnitOfMeasurementCodeType">
+		<annotation>
+			<documentation>Indicator defining the measurement used. Code values in this list are contained within the UN/CEFACT Rec. 20 Unit of Measure code list (available at: http://www.unece.org/cefact/codesfortrade/rec20.xml). Code value descriptions from that list are as follows:
+        CEL = degree Celsius
+        FAH = degree Fahrenheit
+      </documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<enumeration value="CEL"/>
+			<enumeration value="FAH"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TransactionPurposeIndicatorType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Add"/>
+			<enumeration value="Cancellation"/>
+			<enumeration value="Change"/>
+			<enumeration value="Confirmation"/>
+			<enumeration value="Delete"/>
+			<enumeration value="Duplicate"/>
+			<enumeration value="Original"/>
+			<enumeration value="Replace"/>
+			<enumeration value="Request"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TransactionTypeCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Standard">
+				<annotation>
+					<documentation>Specifies a typical custody transfer from one party to another.</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="Exchange">
+				<annotation>
+					<documentation>Specifies a custody transfer between 2 or more suppliers before the buyer assumes custody.</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="Unknown">
+				<annotation>
+					<documentation>An exception to the typical usage of BoL.</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="TransportContainerType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Tank"/>
+			<enumeration value="Truck"/>
+			<enumeration value="RailCar"/>
+			<enumeration value="Pipeline"/>
+			<enumeration value="Barge"/>
+			<enumeration value="MarineVessel"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TransportEventType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Delivery"/>
+			<enumeration value="Receipt"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TransportMethodCodeType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Air"/>
+			<enumeration value="AirExpress"/>
+			<enumeration value="ParcelPost"/>
+			<enumeration value="ExpeditedTruck"/>
+			<enumeration value="CustomerPickup"/>
+			<enumeration value="Motor-CommonCarrier"/>
+			<enumeration value="Rail"/>
+			<enumeration value="Ocean"/>
+			<enumeration value="SupplierTruck"/>
+			<enumeration value="BestWay-ShippersOption"/>
+			<enumeration value="Vessel"/>
+			<enumeration value="Other"/>
+			<enumeration value="Boat"/>
+			<enumeration value="Pipeline"/>
+			<enumeration value="Barge"/>
+			<enumeration value="Truck"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="VehicleTypeCodeType">
+		<restriction base="string">
+			<enumeration value="Barge"/>
+			<enumeration value="DrayTruck"/>
+			<enumeration value="Pipeline"/>
+			<enumeration value="Rail"/>
+			<enumeration value="Vessel/Tanker"/>
+			<enumeration value="TankTruckTractor"/>
+			<enumeration value="BookTransfer"/>
+			<enumeration value="TankTruckTrailer"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="VesselType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Tank"/>
+			<enumeration value="Truck"/>
+			<enumeration value="RailCar"/>
+			<enumeration value="Barge"/>
+			<enumeration value="Boat"/>
+			<enumeration value="MarineVessel"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="WellCategoryType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Development"/>
+			<enumeration value="Workover"/>
+			<enumeration value="Wildcat"/>
+			<enumeration value="Recompletion"/>
+			<enumeration value="NonWell"/>
+			<enumeration value="Abandoned"/>
+			<enumeration value="ExistingWell"/>
+			<enumeration value="DevBelow3000"/>
+			<enumeration value="ReacidizeWell"/>
+			<enumeration value="RefractedWell"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="WellType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Oil"/>
+			<enumeration value="Gas"/>
+			<enumeration value="IndustrialDisposal"/>
+			<enumeration value="Thermal"/>
+			<enumeration value="Storage"/>
+			<enumeration value="Water"/>
+			<enumeration value="Injection"/>
+			<enumeration value="Uranium"/>
+			<enumeration value="Relief"/>
+			<enumeration value="NonWell"/>
+			<enumeration value="DisposalWell"/>
+			<enumeration value="Sulfur"/>
+			<enumeration value="HorizontalOil"/>
+			<enumeration value="HorizontalGas"/>
+			<enumeration value="Brine"/>
+			<enumeration value="DirectionalOil"/>
+			<enumeration value="DirectionalGas"/>
+			<enumeration value="DirectionalNonWell"/>
+			<enumeration value="Environmental"/>
+			<enumeration value="IndustrialNonWell"/>
+			<enumeration value="Other"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="YesNoType">
+		<restriction base="NMTOKEN">
+			<enumeration value="Yes"/>
+			<enumeration value="No"/>
+		</restriction>
+	</simpleType>
+</schema>

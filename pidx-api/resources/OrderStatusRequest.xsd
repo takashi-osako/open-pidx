@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.pidx.org/schemas/v1.51" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:pidx="http://www.pidx.org/schemas/v1.51" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.51">
+	<annotation>
+		<documentation>
+					Schema Name:		OrderStatusRequest
+					Schema Purpose:
+					Document ID: 		01-467-10-25-2007 
+					
+					© PIDX, Inc. 2012
+					Use of this copyrighted material is subject to the PIDX End User License Agreement available at
+					www.pidx.org/license. Each user agrees to such End User License Agreement by making any use
+					of the copyrighted material.
+					
+					This document was prepared and is maintained in accordance with the PIDX Procedures for Standards
+					Development, a copy of which is available at www.pidx.org/procedures, and the PIDX Antitrust Guidelines, 
+					a copy of which is available at www.pidx.org/antitrust.
+					
+					Schema Version Number:	1.51 
+					Version Date: 				2012-01-11
+					Change Management Log:
+					Version		Person					Date			Description
+					Sep2007	Original					2007-09-15		From Sep2007 release
+					1.51		PIDX BMWG				2012-01-11		Transfer to PIDX, Inc.
+		</documentation>
+	</annotation>
+	<include schemaLocation="PIDXLib.xsd"/>
+	<element name="OrderStatusRequest">
+		<annotation>
+			<documentation>Structure containing  information about the OrderStatusRequest.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:OrderStatusRequestProperties"/>
+				<element ref="pidx:OrderStatusRequestDetails" minOccurs="0"/>
+			</sequence>
+			<attribute ref="pidx:version" use="optional"/>
+		</complexType>
+	</element>
+	<element name="OrderStatusRequestDetails">
+		<complexType>
+			<sequence>
+				<element ref="pidx:OrderStatusRequestLineItems" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="OrderStatusRequestProperties">
+		<annotation>
+			<documentation>Structure containing information on the properties of the OrderStatusRequest.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:OrderNumber"/>
+				<element ref="pidx:OrderType"/>
+				<element ref="pidx:OrderDate"/>
+				<element ref="pidx:PurchaseOrderReferenceInformation" minOccurs="0"/>
+				<element ref="pidx:DateTimeRange" minOccurs="0"/>
+				<element ref="pidx:OrderCode" minOccurs="0"/>
+				<element ref="pidx:OrderID" minOccurs="0"/>
+				<element ref="pidx:SystemAccountCode" minOccurs="0"/>
+				<element ref="pidx:LanguageCode" minOccurs="0"/>
+				<element ref="pidx:PartnerInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:RevisionNumber" minOccurs="0"/>
+				<element ref="pidx:ReleaseNumber" minOccurs="0"/>
+				<element ref="pidx:DocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:CustomerSpecificInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:Comment" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

@@ -1,0 +1,3245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.pidx.org/schemas/v1.51" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:pidx="http://www.pidx.org/schemas/v1.51" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.51">
+	<annotation>
+		<documentation>
+					Schema Name:		PIDXLib
+					Schema Purpose:	Include file used by all primary XSD files
+					Document ID: 		01-470-10-25-2007 
+					
+					© PIDX, Inc. 2012
+					Use of this copyrighted material is subject to the PIDX End User License Agreement available at
+					www.pidx.org/license. Each user agrees to such End User License Agreement by making any use
+					of the copyrighted material.
+					
+					This document was prepared and is maintained in accordance with the PIDX Procedures for Standards
+					Development, a copy of which is available at www.pidx.org/procedures, and the PIDX Antitrust Guidelines, 
+					a copy of which is available at www.pidx.org/antitrust.
+					
+					Schema Version Number:	1.51 
+					Version Date: 				2012-01-11
+					Change Management Log:
+					Version		Person					Date			Description
+					Sep2007	Original					2007-09-15		From Sep2007 release
+					1.51		PIDX BMWG				2012-01-11		Transfer to PIDX, Inc.
+		</documentation>
+	</annotation>
+	<include schemaLocation="PIDXCodeLists.xsd"/>
+	<element name="AccompanyingSampleCode" type="pidx:AccompanyingSampleCodeType">
+		<annotation>
+			<documentation>Indicator whether or not a product sample should accompany shipment.</documentation>
+		</annotation>
+	</element>
+	<element name="AccountHolderName" type="string">
+		<annotation>
+			<documentation>Structure which identifies the account holder, the well, and rig.</documentation>
+		</annotation>
+	</element>
+	<element name="AccountInformation">
+		<annotation>
+			<documentation>Structure which contains information about the accounts involved in the transaction.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:AccountHolderName" minOccurs="0"/>
+				<choice>
+					<sequence>
+						<element ref="pidx:AccountNumber" minOccurs="0"/>
+						<element ref="pidx:FinancialInstitution" minOccurs="0"/>
+						<element ref="pidx:FinancialInstitutionDFINumber" minOccurs="0"/>
+					</sequence>
+					<sequence>
+						<element ref="pidx:CreditCardNumber" minOccurs="0"/>
+						<element ref="pidx:CreditCardType" minOccurs="0"/>
+						<element ref="pidx:ExpireDate" minOccurs="0"/>
+					</sequence>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AccountNumber" type="string">
+		<annotation>
+			<documentation>The number of the account.</documentation>
+		</annotation>
+	</element>
+	<element name="AcknowledgementType" type="string"/>
+	<element name="ActualQuantity" type="pidx:QuantityType">
+		<annotation>
+			<documentation>Actual quantity allowed per Letter of Credit.</documentation>
+		</annotation>
+	</element>
+	<element name="AddressInformation">
+		<annotation>
+			<documentation>Structure which contains complete address information.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<annotation>
+					<documentation>Unique definitions defined previously in OFSP-Lib begin with: PostBoxNumber</documentation>
+				</annotation>
+				<element ref="pidx:POBoxNumber" minOccurs="0"/>
+				<element ref="pidx:BuildingHouseNumber" minOccurs="0"/>
+				<element ref="pidx:StreetName" minOccurs="0"/>
+				<element ref="pidx:AddressLine" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:CityName" minOccurs="0"/>
+				<element ref="pidx:StateProvince" minOccurs="0"/>
+				<element ref="pidx:PostalCode" minOccurs="0"/>
+				<element ref="pidx:PostalCountry" minOccurs="0"/>
+				<element ref="pidx:CountyName" minOccurs="0"/>
+				<element ref="pidx:LocationIdentifier" minOccurs="0"/>
+				<element ref="pidx:StreetDirection" minOccurs="0"/>
+				<element ref="pidx:RegionName" minOccurs="0"/>
+				<element ref="pidx:LocationCode" minOccurs="0"/>
+				<element ref="pidx:Comment" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddressLine" type="string">
+		<annotation>
+			<documentation>Used to hold additional address information, such as "Suite Number", "Apt. Number", etc.  Can also be used to hold the address in lieu of the BuildingHouseNumber and StreetName.</documentation>
+		</annotation>
+	</element>
+	<element name="AdjustedRoofQuantity" type="pidx:QuantityType"/>
+	<element name="AdjustmentQuantity" type="pidx:QuantityType"/>
+	<element name="AdvancedShipmentNoticeLineItems" type="pidx:AdvancedShipmentNoticeLineItemsType"/>
+	<element name="AdvancedShipNoticeLineItems" type="pidx:AdvancedShipNoticeLineItemsType"/>
+	<element name="AdditiveTypeIdentifier">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="identifierIndicator" type="pidx:IdentifierIndicatorType" use="required"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="AffectShipperInventory" type="pidx:YesNoType"/>
+	<element name="AllowanceOrCharge">
+		<complexType>
+			<sequence>
+				<choice>
+					<element ref="pidx:AllowanceOrChargeTotalAmount" minOccurs="0"/>
+					<element ref="pidx:AllowanceOrChargeRate" minOccurs="0"/>
+					<element ref="pidx:AllowanceOrChargePercent" minOccurs="0"/>
+				</choice>
+				<element ref="pidx:AllowanceOrChargeNumber" minOccurs="0"/>
+				<element ref="pidx:AllowanceOrChargeTypeCode" minOccurs="0"/>
+				<element ref="pidx:MethodOfHandlingCode" minOccurs="0"/>
+				<element ref="pidx:AllowanceOrChargeDescription" minOccurs="0"/>
+				<element ref="pidx:AllowanceOrChargeQuantity" minOccurs="0"/>
+			</sequence>
+			<attribute name="allowanceOrChargeIndicator" type="pidx:AllowanceOrChargeIndicatorType" use="required"/>
+		</complexType>
+	</element>
+	<element name="AllowanceOrChargeDescription" type="string"/>
+	<element name="AllowanceOrChargeNumber" type="string"/>
+	<element name="AllowanceOrChargePercent">
+		<complexType>
+			<simpleContent>
+				<extension base="decimal">
+					<attribute name="percentIndicator" type="string" use="optional"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="AllowanceOrChargeQuantity" type="pidx:QuantityType"/>
+	<element name="AllowanceOrChargeRate">
+		<complexType>
+			<sequence>
+				<element ref="pidx:MonetaryAmount"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+				<element ref="pidx:CurrencyCode" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AllowanceOrChargeTotalAmount" type="pidx:MonetaryType"/>
+	<element name="AllowanceOrChargeTypeCode" type="pidx:AllowanceOrChargeTypeCodeType"/>
+	<element name="AllowPartnerChange" type="pidx:YesNoType"/>
+	<element name="AlternativeCommunicationMethod">
+		<annotation>
+			<documentation>Additional methods of communication, ie., fax, printer, cell phone, in addition to those specifically listed elsewhere in contact or address information.</documentation>
+		</annotation>
+		<complexType>
+			<annotation>
+				<documentation>Unique definitions defined previously in OFSP-Lib begin with: communicationMethodType</documentation>
+			</annotation>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="alternativeCommunicationMethodIndicator" type="pidx:AlternativeCommunicationMethodIndicatorType" use="required"/>
+					<attribute name="communicationMethodType" type="pidx:CommunicationMethodType" use="required">
+						<annotation>
+							<documentation>Identifies which kind of communication is beging given.</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="definitionOfOther" type="string" use="optional">
+						<annotation>
+							<documentation>Identifies what "Other" is if chosen from an attribute enumeration list</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="AmbientTemperature">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Temperature"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="APIGravity" type="decimal"/>
+	<element name="ApprovalDate" type="date"/>
+	<element name="ApproverName" type="string"/>
+	<element name="Attachment">
+		<complexType>
+			<sequence>
+				<element ref="pidx:AttachmentPurposeCode"/>
+				<element ref="pidx:FileName" minOccurs="0"/>
+				<element ref="pidx:AttachmentTitle" minOccurs="0"/>
+				<element ref="pidx:AttachmentDescription" minOccurs="0"/>
+				<element ref="pidx:FileType" minOccurs="0"/>
+				<element ref="pidx:AttachmentLocation" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AttachmentDescription" type="string"/>
+	<element name="AttachmentLocation" type="string"/>
+	<element name="AttachmentPurposeCode" type="pidx:AttachmentPurposeCodeType"/>
+	<element name="AttachmentTitle" type="string"/>
+	<element name="AverageFlowRate" type="pidx:QuantityType"/>
+	<element name="AveragePressure">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Pressure"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AverageTemperature">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Temperature"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="BalanceItemFlag" type="boolean">
+		<annotation>
+			<documentation>Product for which the quantity can be adjusted for transportation purposes.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="BasisDescription" type="string"/>
+	<element name="BatchNumber">
+		<annotation>
+			<documentation>Identification by a manufacturer or seller for a homogeneous quantity/quality of product 
+				sharing the same factors of production.
+			</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="batchNumberCreator" type="pidx:BatchNumberCreatorType" use="required">
+						<annotation>
+							<documentation>Identifies the creator of the batch number.</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="definitionOfOther" type="string" use="optional">
+						<annotation>
+							<documentation>Identifies what "Other" is if chosen from an attribute enumeration list</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="Block">
+		<complexType>
+			<sequence>
+				<element ref="pidx:BlockName" minOccurs="0"/>
+				<element ref="pidx:OCSGNumber" minOccurs="0"/>
+				<element ref="pidx:StateLease" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="BlockName" type="string"/>
+	<element name="BuildingHouseNumber" type="string">
+		<annotation>
+			<documentation>The street number of the building, house, etc. in the address.</documentation>
+		</annotation>
+	</element>
+	<element name="BuyersCurrency">
+		<annotation>
+			<documentation>Indicates the currency of the buyer.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:CurrencyCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CardAuthorizationCode" type="string"/>
+	<element name="CardHolderName" type="string"/>
+	<element name="CardReferenceNumber" type="string"/>
+	<element name="CarrierEquipmentCode" type="string">
+		<annotation>
+			<documentation>The requested or actual transportation equipment type used to move product(s).</documentation>
+		</annotation>
+	</element>
+	<element name="ChangedByPartner" type="pidx:PartnerEventAction"/>
+	<element name="ChangeDescription" type="string"/>
+	<element name="ChangeOrderInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:OrderChangeNumber"/>
+				<element ref="pidx:OrderChangeDate"/>
+				<element ref="pidx:PurchaseOrderTypeCode" minOccurs="0"/>
+				<element ref="pidx:SalesOrderNumber" minOccurs="0"/>
+				<element ref="pidx:SequenceNumber" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ChangeSequenceNumber" type="string"/>
+	<element name="CityName" type="string">
+		<annotation>
+			<documentation>The name of the city or municipality.</documentation>
+		</annotation>
+	</element>
+	<element name="CloseDate" type="date"/>
+	<element name="CloseReading" type="decimal"/>
+	<element name="Comment" type="string">
+		<annotation>
+			<documentation>Free form text used to add comment information.</documentation>
+		</annotation>
+	</element>
+	<element name="CommodityCode">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="agencyIndicator" type="string" use="optional"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="CommodityDescription" type="string"/>
+	<element name="CompanyName" type="string"/>
+	<element name="CompositeFactor" type="decimal"/>
+	<element name="ConfirmationDateTime" type="dateTime"/>
+	<element name="ConfirmationStatusCode" type="pidx:StatusCodeType"/>
+	<element name="ConnectingCarrierTicketNumber" type="string"/>
+	<element name="ContactDescription" type="string">
+		<annotation>
+			<documentation>The name of the contact person(s) or the role within the organization.</documentation>
+		</annotation>
+	</element>
+	<element name="ContactIdentifier">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="contactIdentifierIndicator" type="pidx:ContactIdentifierIndicatorType" use="optional"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="ContactInformation">
+		<annotation>
+			<documentation>Structure which contains the information  for contacting a person, organization or business.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:ContactIdentifier" minOccurs="0"/>
+				<element ref="pidx:ContactName" minOccurs="0"/>
+				<element ref="pidx:ContactDescription" minOccurs="0"/>
+				<element ref="pidx:Telephone" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:EmailAddress" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:AlternativeCommunicationMethod" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:LanguageCode" minOccurs="0"/>
+			</sequence>
+			<attribute name="contactInformationIndicator" type="pidx:ContactInformationIndicatorType"/>
+		</complexType>
+	</element>
+	<element name="ContactName" type="string">
+		<annotation>
+			<documentation>The name of the contact person(s) or the role within the organization.</documentation>
+		</annotation>
+	</element>
+	<element name="ConveyanceInformation">
+		<annotation>
+			<documentation>Structure containing transportation and shipping information.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:ConveyanceIdentifier" minOccurs="0"/>
+				<element ref="pidx:VoyageTripNumber" minOccurs="0"/>
+				<element ref="pidx:VoyageTripDateTimeRange" minOccurs="0"/>
+				<element ref="pidx:EstimatedDateTimeOfArrival" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ConveyanceIdentifier" type="string">
+		<annotation>
+			<documentation>A unique identifier of the conveyance and/or trip (i.e. train ID, vessel name).  Meant to hold the highest level of conveyance and not container numbers, railcar numbers, etc.</documentation>
+		</annotation>
+	</element>
+	<element name="CorrectedDensity" type="decimal"/>
+	<element name="CorrectedGravity" type="decimal"/>
+	<element name="CorrectedQuantity" type="pidx:QuantityType"/>
+	<element name="CorrectedPressureLiquidFactor" type="decimal"/>
+	<element name="CorrectedTemperatureLiquidFactor" type="decimal"/>
+	<element name="CountryOfFinalDestination">
+		<annotation>
+			<documentation>The country where product is ultimately delivered or is deemed to have been delivered.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:CountryCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CountryOfOrigin">
+		<annotation>
+			<documentation>The country where product originates or is deemed to have originated.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:CountryCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CountyName" type="string">
+		<annotation>
+			<documentation>The name of the county.</documentation>
+		</annotation>
+	</element>
+	<element name="CreateDateTime" type="dateTime"/>
+	<element name="CreatedByPartner" type="pidx:PartnerEventAction"/>
+	<element name="CreditCardExpirationDate" type="date"/>
+	<element name="CreditCardInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:CreditCardNumber"/>
+				<element ref="pidx:CardHolderName" minOccurs="0"/>
+				<element ref="pidx:CreditCardType" minOccurs="0"/>
+				<element ref="pidx:CreditCardExpirationDate" minOccurs="0"/>
+				<element ref="pidx:CardAuthorizationCode" minOccurs="0"/>
+				<element ref="pidx:CardReferenceNumber" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CreditCardNumber" type="integer">
+		<annotation>
+			<documentation>Number of the credit card being used.</documentation>
+		</annotation>
+	</element>
+	<element name="CreditCardType" type="string">
+		<annotation>
+			<documentation>Type of credit card as generally identified by financial institutions.</documentation>
+		</annotation>
+	</element>
+	<element name="CumulativeTotalQuantity" type="pidx:QuantityType">
+		<annotation>
+			<documentation>Cumulative quantity of the product shipped associated to a contractor or a blanket purchase order.</documentation>
+		</annotation>
+	</element>
+	<element name="CurrencyRates">
+		<annotation>
+			<documentation>Structure which contains information about the rates at which currency is exchanged.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:SellersCurrency"/>
+				<element ref="pidx:BuyersCurrency"/>
+				<element ref="pidx:ExchangeRate"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CustodyLocationDescription" type="string"/>
+	<element name="CustodyLocationIdentifier">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="identifierIndicator" type="pidx:IdentifierIndicatorType" use="optional"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="CustodyLocationInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:CustodyLocationIdentifier" maxOccurs="unbounded"/>
+				<element ref="pidx:CustodyLocationDescription" minOccurs="0"/>
+				<element ref="pidx:AddressInformation" minOccurs="0"/>
+				<element ref="pidx:GeographicalInformation" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CustodySupercedeTicketNumber" type="string"/>
+	<element name="CustodyTicketDateTime" type="dateTime"/>
+	<element name="CustodyTicketLineItemNumber" type="string"/>
+	<element name="CustodyTicketInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:CustodyTicketNumber"/>
+				<element ref="pidx:CustodyTicketDateTime"/>
+				<element ref="pidx:CustodyTransferStartDateTime" minOccurs="0"/>
+				<element ref="pidx:CustodyTransferStopDateTime" minOccurs="0"/>
+				<element ref="pidx:RevisionNumber" minOccurs="0"/>
+				<element ref="pidx:CustodySupercedeTicketNumber" minOccurs="0"/>
+				<element ref="pidx:ConnectingCarrierTicketNumber" minOccurs="0"/>
+			</sequence>
+			<attribute name="custodyTicketType" type="pidx:CustodyTicketType" use="required"/>
+			<attribute name="thirdPartyTicketIndicator" type="pidx:YesNoType" use="optional"/>
+		</complexType>
+	</element>
+	<element name="CustodyTicketNumber" type="string"/>
+	<element name="CustodyTicketQuantity" type="pidx:QuantityType"/>
+	<element name="CustodyTicketTimeLog">
+		<complexType>
+			<sequence>
+				<element ref="pidx:CustodyTicketTimeLogEntry" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CustodyTicketTimeLogEntry">
+		<complexType>
+			<sequence>
+				<element ref="pidx:TimeLogDateTime"/>
+				<element ref="pidx:TimeLogActivity" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CustodyTransferInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:FromPartner"/>
+				<element ref="pidx:ToPartner"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CustodyTransferStartDateTime" type="dateTime"/>
+	<element name="CustodyTransferStopDateTime" type="dateTime"/>
+	<element name="CustomerSpecificInformation">
+		<annotation>
+			<documentation>Holds information required by a specific customer to complete a transaction.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="informationType" type="string" use="required">
+						<annotation>
+							<documentation>Identifies the kind of information being given.</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="DateOfRateOfExchange" type="date"/>
+	<element name="DateTimeRange" type="pidx:DateTimeRangeType"/>
+	<element name="DaysDue" type="integer">
+		<annotation>
+			<documentation>The number of days from the PaymentTermsBasisDate before the discount expires.</documentation>
+		</annotation>
+	</element>
+	<element name="Deferred">
+		<annotation>
+			<documentation>Structure containing the terms for a deferred payment in relation to a transaction.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:DeferredAmount" minOccurs="0"/>
+				<element ref="pidx:DeferredDueDate" minOccurs="0"/>
+				<element ref="pidx:PercentDeferredPayable" minOccurs="0"/>
+				<element ref="pidx:Description" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeferredAmount" type="pidx:MonetaryType">
+		<annotation>
+			<documentation>A monetary amount that is deferred for payment based upon terms in an invoice, contract or agreement.</documentation>
+		</annotation>
+	</element>
+	<element name="DeferredDueDate" type="date">
+		<annotation>
+			<documentation>The date when the deferred payment is due.</documentation>
+		</annotation>
+	</element>
+	<element name="DeliveryTolerances">
+		<annotation>
+			<documentation>Structure containing information on the limits between which the delivered quantity can vary. Can be specified as either a quantity or percentage.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:UpperLimit" minOccurs="0"/>
+				<element ref="pidx:LowerLimit" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Description" type="string">
+		<annotation>
+			<documentation>A textual description of a product or its grade in a particular language.</documentation>
+		</annotation>
+	</element>
+	<element name="DiscountAmount" type="pidx:MonetaryType">
+		<annotation>
+			<documentation>Monetary amount of a discount.</documentation>
+		</annotation>
+	</element>
+	<element name="DiscountedAmountDue" type="pidx:MonetaryType"/>
+	<element name="Discounts">
+		<annotation>
+			<documentation>Structure containing the terms for a discount in relation to a transaction.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<choice maxOccurs="unbounded">
+					<element ref="pidx:DaysDue"/>
+					<element ref="pidx:DiscountsDueDate"/>
+				</choice>
+				<element ref="pidx:PercentDiscount" minOccurs="0"/>
+				<element ref="pidx:DiscountAmount" minOccurs="0"/>
+				<element ref="pidx:Description" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DiscountsDueDate" type="dateTime">
+		<annotation>
+			<documentation>Date when discount expires</documentation>
+		</annotation>
+	</element>
+	<element name="DocumentDate" type="dateTime">
+		<annotation>
+			<documentation>The date of the referenced document.</documentation>
+		</annotation>
+	</element>
+	<element name="DocumentDeliveryInformation">
+		<annotation>
+			<documentation>Identifies the party to which the document should be delivered.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:PartnerInformation" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DocumentIdentifier" type="string">
+		<annotation>
+			<documentation>Identifies the document being referenced.</documentation>
+		</annotation>
+	</element>
+	<element name="DocumentReference">
+		<annotation>
+			<documentation>Structure which contains information that links this request to a reference document, 
+				i.e., contract, agreement, etc.
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:DocumentIdentifier"/>
+				<element ref="pidx:ReferenceItem" minOccurs="0"/>
+				<element ref="pidx:ReferenceInformation" minOccurs="0"/>
+				<element ref="pidx:DocumentDate" minOccurs="0"/>
+			</sequence>
+			<attribute name="referenceType" type="pidx:ReferenceType" use="required">
+				<annotation>
+					<documentation>Identifies what kind of document is being referenced.</documentation>
+				</annotation>
+			</attribute>
+			<attribute name="definitionOfOther" type="string" use="optional">
+				<annotation>
+					<documentation>Identifies what "Other" is if chosen from an attribute enumeration list</documentation>
+				</annotation>
+			</attribute>
+		</complexType>
+	</element>
+	<element name="EffectiveDates">
+		<complexType>
+			<sequence>
+				<element ref="pidx:FromDate"/>
+				<element ref="pidx:ToDate"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="EmailAddress" type="string">
+		<annotation>
+			<documentation>The email address.</documentation>
+		</annotation>
+	</element>
+	<element name="EngineeringChangeOrderIdentifier" type="string">
+		<annotation>
+			<documentation>A buyer-supplied engineering change order document number.</documentation>
+		</annotation>
+	</element>
+	<element name="EquipmentDescription" type="string"/>
+	<element name="EquipmentDetailsLineNumber" type="string"/>
+	<element name="EquipmentIdentifier" type="string">
+		<annotation>
+			<documentation>Unique identification of a piece of equipment such as used for transportation of product.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="EquipmentLoadEmptyStatus" type="pidx:EquipmentLoadEmptyStatusType">
+		<annotation>
+			<documentation>The load status of carrier equipment.</documentation>
+		</annotation>
+	</element>
+	<element name="EquipmentOwnership" type="string">
+		<annotation>
+			<documentation>Indication of relationship of equipment to carrier or ownership of equipment.</documentation>
+		</annotation>
+	</element>
+	<element name="ErrorClassification">
+		<complexType>
+			<sequence>
+				<element ref="pidx:GlobalMessageExceptionCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ErrorDescription">
+		<complexType>
+			<sequence>
+				<element ref="pidx:FreeFormText"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="EstimatedDateTimeOfArrival" type="dateTime">
+		<annotation>
+			<documentation>Date and time shipment or conveyance will arrive at destination.</documentation>
+		</annotation>
+	</element>
+	<element name="EventDateTime" type="dateTime"/>
+	<element name="ExceptionDescription">
+		<complexType>
+			<sequence>
+				<element ref="pidx:ErrorClassification"/>
+				<element ref="pidx:ErrorDescription"/>
+				<element ref="pidx:OffendingMessageComponent" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ExchangeRate" type="decimal">
+		<annotation>
+			<documentation>An equation which converts monetary amounts into different denominations.</documentation>
+		</annotation>
+	</element>
+	<element name="ExpireDate" type="dateTime">
+		<annotation>
+			<documentation>The date on which the account expires.</documentation>
+		</annotation>
+	</element>
+	<element name="FieldName" type="string"/>
+	<element name="FieldTicketDate" type="date"/>
+	<element name="FieldTicketInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:FieldTicketNumber"/>
+				<element ref="pidx:FieldTicketDate" minOccurs="0"/>
+				<element ref="pidx:RevisionNumber" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="FieldTicketLineItemNumber" type="string"/>
+	<element name="FieldTicketNumber" type="string"/>
+	<element name="FieldTicketQuantity" type="pidx:QuantityType"/>
+	<element name="FieldTicketResponseDate" type="date"/>
+	<element name="FieldTicketResponseNumber" type="string"/>
+	<element name="FieldTicketSubLineItemNumber" type="string"/>
+	<element name="FieldTicketTotal" type="pidx:MonetaryType"/>
+	<element name="FileName" type="string"/>
+	<element name="FileType" type="string"/>
+	<element name="FinalDestinationLocationDescription" type="string"/>
+	<element name="FinalDestinationLocationIdentifier">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="identifierIndicator" type="pidx:IdentifierIndicatorType" use="optional"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="FinalDestinationLocationInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:FinalDestinationLocationIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:FinalDestinationLocationDescription" minOccurs="0"/>
+				<element ref="pidx:AddressInformation" minOccurs="0"/>
+				<element ref="pidx:GeographicalInformation" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="FinancialInstitution" type="string">
+		<annotation>
+			<documentation>Institution that conducts monetary and related transactions, such as of the Payer.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="FinancialInstitutionDFINumber" type="string">
+		<annotation>
+			<documentation>Routing number of bank or financial institution, such as the Payer bank as assigned by designated 			authority.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="FlashTemperature">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Temperature"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="FreeFormText">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="language" type="string"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="FreightIncludedFlag" type="boolean"/>
+	<element name="FromDate" type="date"/>
+	<element name="FromPartner" type="pidx:CustodyPartnerType">
+		<annotation>
+			<documentation>Information about a trading partner who is giving custody of a product in a custody transfer.</documentation>
+		</annotation>
+	</element>
+	<element name="GaugeQuantity" type="pidx:QuantityType"/>
+	<element name="GaugeReadingMeasure">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Measurement"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GeographicalInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:FieldName" minOccurs="0"/>
+				<sequence minOccurs="0">
+					<element ref="pidx:Section"/>
+					<element ref="pidx:Township"/>
+					<element ref="pidx:Range"/>
+				</sequence>
+				<element ref="pidx:Region" minOccurs="0"/>
+				<element ref="pidx:Block" minOccurs="0"/>
+				<element ref="pidx:GPSCoordinates" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GlobalExceptionTypeCode" type="string"/>
+	<element name="GlobalMessageComponentCode" type="string"/>
+	<element name="GlobalMessageExceptionCode" type="string"/>
+	<element name="GPSCoordinates">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Latitude"/>
+				<element ref="pidx:Longitude"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Gravity">
+		<annotation>
+			<documentation>Specifies the gravity of the product.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="decimal">
+					<attribute name="Type" type="pidx:GravityCodeType">
+						<annotation>
+							<documentation>Specifies the type of gravity.</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="GrossQuantity">
+		<annotation>
+			<documentation>A numeric signed field which represents the gross (metered) quantity of product loaded. Since this is a signed field, negative values are allowed. Negative values could mean: a cancelled transaction, receipt of product into a terminal, etc.</documentation>
+			<documentation>This represents a combination of the following 2 fields in the PDXB v3 record set: 'GrossQuantity' and 'GrossCreditSign'.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="decimal">
+					<attribute name="QuantityUnitOfMeasurement" type="pidx:QuantityUnitOfMeasurementCodeType"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="GrossTotalAmount" type="pidx:MonetaryType">
+		<annotation>
+			<documentation>Total monetary amount of all line items excluding tax.</documentation>
+		</annotation>
+	</element>
+	<element name="GrossVolume" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The value of the gross volumetric measure</documentation>
+		</annotation>
+	</element>
+	<element name="GrossWeight" type="pidx:QuantityType">
+		<annotation>
+			<documentation>Weight of equipment unit including lading, dunnage, packaging, and tare weight.</documentation>
+		</annotation>
+	</element>
+	<element name="HazardousMaterialClassCode">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="hazardousMaterialIndicator" type="string" use="required"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="HazardousMaterialDescription" type="string"/>
+	<element name="HazardousMaterials">
+		<complexType>
+			<sequence>
+				<choice>
+					<element ref="pidx:SpecialHandlingCode" minOccurs="0"/>
+					<element ref="pidx:HazardousMaterialDescription" minOccurs="0"/>
+				</choice>
+				<element ref="pidx:HazardousMaterialClassCode" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Haze" type="integer"/>
+	<element name="Height" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The vertical dimension of an object specified in a given Unit of Measure.</documentation>
+		</annotation>
+	</element>
+	<element name="ImportLicenseAvailableFlag" type="boolean">
+		<annotation>
+			<documentation>Defines whether or not an important license is available for product shipment.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="ImportLicenseNeededFlag" type="boolean">
+		<annotation>
+			<documentation>Defines whether or not an import license is needed for product shipment.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="IncrustationFactor" type="decimal"/>
+	<element name="IntermodalService">
+		<annotation>
+			<documentation>Code indicating the type of intermodal service.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="codeListName" type="string" use="optional">
+						<annotation>
+							<documentation>Indicates the organizational body who assigned the list of codes</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="Intrastat">
+		<complexType>
+			<sequence>
+				<element ref="pidx:CommodityCode" minOccurs="0"/>
+				<element ref="pidx:CommodityDescription" minOccurs="0"/>
+				<element ref="pidx:TransactionNature" minOccurs="0"/>
+				<element ref="pidx:SupplementaryUnits" minOccurs="0"/>
+				<element ref="pidx:CountryOfFinalDestination" minOccurs="0"/>
+				<element ref="pidx:TransportMethodCode" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="InvoiceDate" type="date">
+		<annotation>
+			<documentation>The date/time of the invoice.</documentation>
+		</annotation>
+	</element>
+	<element name="InvoiceInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:InvoiceNumber"/>
+				<element ref="pidx:InvoiceDate" minOccurs="0"/>
+				<element ref="pidx:InvoiceTypeCode" minOccurs="0"/>
+				<element ref="pidx:RevisionNumber" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="InvoiceNumber" type="string">
+		<annotation>
+			<documentation>The identifier of an invoice instance.</documentation>
+		</annotation>
+	</element>
+	<element name="InvoiceQuantity" type="pidx:QuantityType"/>
+	<element name="InvoiceResponseDate" type="date"/>
+	<element name="InvoiceResponseNumber" type="string"/>
+	<element name="InvoiceStatus" type="string"/>
+	<element name="InvoiceTotal" type="pidx:MonetaryType"/>
+	<element name="InvoiceTypeCode" type="pidx:InvoiceTypeCodeType">
+		<annotation>
+			<documentation>The financial classification of the invoice.</documentation>
+		</annotation>
+	</element>
+	<element name="ItemDetailChangeCode" type="pidx:ItemDetailChangeCodeType"/>
+	<element name="JobDescription" type="string"/>
+	<element name="JobLocationClassCode" type="pidx:JobLocationClassCodeType">
+		<annotation>
+			<documentation>Two-digit code indicating the location of the job.</documentation>
+		</annotation>
+	</element>
+	<element name="JobLocationDescription" type="string"/>
+	<element name="JobLocationIdentifier">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="jobLocationIdentifierIndicator" type="pidx:JobLocationIdentifierIndicator" use="optional"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="JobLocationInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:JobLocationIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:JobLocationClassCode" minOccurs="0"/>
+				<element ref="pidx:JobLocationDescription" minOccurs="0"/>
+				<element ref="pidx:JobLocationStatus" minOccurs="0"/>
+				<element ref="pidx:WellInformation" minOccurs="0"/>
+				<element ref="pidx:JobSiteCategory" minOccurs="0"/>
+				<element ref="pidx:AddressInformation" minOccurs="0"/>
+				<element ref="pidx:GeographicalInformation" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="JobLocationStatus" type="pidx:JobLocationStatusType"/>
+	<element name="JobSiteCategory" type="pidx:JobSiteCategoryType"/>
+	<element name="JobSummary" type="string"/>
+	<element name="Jurisdiction" type="string">
+		<annotation>
+			<documentation>The authority exercised by a nation, a judicial body, or a legislative body over 			persons, places, and property. Jurisdiction may apply to the territory over which a nation has 					control, including the land area, the adjacent sea, and the airspace above. 
+				It may also refer to the authority of an international body to make decisions 
+				binding on national entities.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="Label" type="string">
+		<annotation>
+			<documentation>The actual label that should be printed for the line item.</documentation>
+		</annotation>
+	</element>
+	<element name="LanguageCode" type="string">
+		<annotation>
+			<documentation>The language used for the transaction.</documentation>
+		</annotation>
+	</element>
+	<element name="Latitude" type="string"/>
+	<element name="Length" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The longtest horizontal dimension of an object</documentation>
+		</annotation>
+	</element>
+	<element name="LetterOfCreditInformation">
+		<annotation>
+			<documentation>Structure holding information describing the details of the letter of credit associated 
+				with a transaction.
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:DocumentReference"/>
+				<element name="AdvisingBank">
+					<annotation>
+						<documentation>
+							Bank or financial institution which will be responsible for transacting 						Letter(s) of Credit.
+						</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element ref="pidx:PartnerInformation"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="LetterOfCreditAmount" type="pidx:MonetaryType">
+					<annotation>
+						<documentation>
+							The monetary amount of the Letter of Credit.
+						</documentation>
+					</annotation>
+				</element>
+				<element ref="pidx:PaymentTerms" minOccurs="0"/>
+				<element name="LetterOfCreditQuantity">
+					<annotation>
+						<documentation>
+							Structure holding information on the quantity of goods authorized by the 						letter of credit
+						</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element ref="pidx:MinimumQuantity" minOccurs="0"/>
+							<element ref="pidx:ActualQuantity" minOccurs="0"/>
+							<element ref="pidx:MaximumQuantity" minOccurs="0"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="LetterOfCreditVoyageDateTimeRange" type="pidx:DateTimeRangeType">
+					<annotation>
+						<documentation>
+							Structure holding date range by which the conveyance must depart in order for 						the letter of credit to be valid.
+						</documentation>
+					</annotation>
+				</element>
+				<element name="LetterOfCreditNegotiatedDateTimeRange" type="pidx:DateTimeRangeType">
+					<annotation>
+						<documentation>
+							Structure holding date range by which the letter of credit must be negotiated 						in order to be valid.
+						</documentation>
+					</annotation>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="LineItemAdditive">
+		<complexType>
+			<sequence>
+				<element ref="pidx:AdditiveTypeIdentifier" maxOccurs="unbounded"/>
+				<element ref="pidx:Quantity" minOccurs="0"/>
+				<element ref="pidx:UnitOfMeasureCode" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="LineItemColor" type="string"/>
+	<element name="LineItemDescription" type="string"/>
+	<element name="LineItemIdentifier">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="identifierIndicator" type="pidx:IdentifierIndicatorType" use="required"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="LineItemInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:LineItemIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:LineItemName" minOccurs="0"/>
+				<element ref="pidx:LineItemDescription" minOccurs="0"/>
+				<element ref="pidx:ManufacturerIdentifier" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="LineItemGrossQuantity" type="pidx:QuantityType"/>
+	<element name="LineItemMeasures">
+		<complexType>
+			<sequence>
+				<element ref="pidx:SampleMeasures" minOccurs="0"/>
+				<element ref="pidx:VesselMeasures" minOccurs="0"/>
+				<element ref="pidx:TankMeasures" minOccurs="0"/>
+				<element ref="pidx:Meter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:PartnerDefinedMeasure" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="LineItemName" type="string"/>
+	<element name="LineItemNetQuantity" type="pidx:QuantityType"/>
+	<element name="LineItemNominationQuantity" type="pidx:QuantityType"/>
+	<element name="LineItemNumber" type="string">
+		<annotation>
+			<documentation>A number of the line in the document.</documentation>
+		</annotation>
+	</element>
+	<element name="LineItemPurposeCode">
+		<annotation>
+			<documentation>The purpose in the message for a given line item.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="codeListName" type="string" use="optional">
+						<annotation>
+							<documentation>Indicates the organizational body who assigned the list of codes</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="LineItemRequestedAction" type="pidx:LineRequestedActionType"/>
+	<element name="LineItemScheduleQuantity" type="pidx:QuantityType"/>
+	<element name="LineItemTankNumber" type="string"/>
+	<element name="LineItemText" type="string">
+		<annotation>
+			<documentation>Free-form text applicable to a particular line item.</documentation>
+		</annotation>
+	</element>
+	<element name="LineItemTotal" type="pidx:MonetaryType"/>
+	<element name="LineItemVersionNumber" type="integer"/>
+	<element name="LineItemWaterQuantity" type="pidx:QuantityType"/>
+	<element name="LineResponseReasonCode" type="string"/>
+	<element name="LineStatusCode" type="pidx:LineStatusCodeType"/>
+	<element name="Location">
+		<complexType>
+			<sequence>
+				<element ref="pidx:LocationIdentifier" minOccurs="0"/>
+				<element ref="pidx:LocationName" minOccurs="0"/>
+				<element ref="pidx:AddressInformation" minOccurs="0"/>
+				<element ref="pidx:GeographicalInformation" minOccurs="0"/>
+				<element ref="pidx:LocationDescription" minOccurs="0"/>
+			</sequence>
+			<attribute name="locationIndicator" type="pidx:LocationIndicatorType" use="optional"/>
+		</complexType>
+	</element>
+	<element name="LocationCode">
+		<annotation>
+			<documentation>A unique code identifying the location.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="codeListName" type="string" use="optional">
+						<annotation>
+							<documentation>Indicates the organizational body who assigned the list of codes</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="LocationDescription" type="string"/>
+	<element name="LocationIdentifier" type="string"/>
+	<element name="LocationName" type="string"/>
+	<element name="LocationStatus" type="pidx:LocationStatusType">
+		<annotation>
+			<documentation>Identifies whether a location is an exisiting or new ship-to location.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="Longitude" type="string"/>
+	<element name="LowerLimit" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The smallest amount of product that will be accepted at delivery.</documentation>
+		</annotation>
+	</element>
+	<element name="LoadTenderIdentifier" type="string">
+		<annotation>
+			<documentation>Unique number assigned to the load tender by sending party.</documentation>
+		</annotation>
+	</element>
+	<element name="LoadTenderInformation">
+		<annotation>
+			<documentation>Structure containing information about the load tender.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:LoadTenderIdentifier"/>
+				<element ref="pidx:LoadTenderIssuedDateTime" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="LoadTenderIssuedDateTime" type="dateTime">
+		<annotation>
+			<documentation>The date/time when the load tender was issued.</documentation>
+		</annotation>
+	</element>
+	<element name="ManufacturingIdentificationDetails">
+		<annotation>
+			<documentation>Structure containing information relative to the manufacture of lading.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:ManufacturingIdentificationTypeCode"/>
+				<element ref="pidx:ManufacturingIdentifier"/>
+				<element ref="pidx:ParentManufacturingIdentifier" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ManufacturingIdentificationTypeCode" type="string">
+		<annotation>
+			<documentation>The type of manufacturing unit of the lading.</documentation>
+		</annotation>
+	</element>
+	<element name="ManufacturingIdentifier" type="string">
+		<annotation>
+			<documentation>The unique number assigned to lading by the manufacturer.</documentation>
+		</annotation>
+	</element>
+	<element name="MaximumQuantity" type="pidx:QuantityType">
+		<annotation>
+			<documentation>Largest quantity allowed per Letter of Credit.</documentation>
+		</annotation>
+	</element>
+	<element name="ModeOfTransportation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:TransportMethodCode" minOccurs="0"/>
+				<element ref="pidx:TransportEvent"/>
+				<element ref="pidx:TransportContainer" minOccurs="0"/>
+				<element ref="pidx:HazardousMaterials" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MeterQuantity" type="pidx:QuantityType"/>
+	<element name="ManufacturerIdentifier" type="string"/>
+	<element name="MaximumMeasurement" type="decimal"/>
+	<element name="Measurement" type="decimal"/>
+	<element name="MeasurementRange">
+		<complexType>
+			<sequence>
+				<element ref="pidx:MinimumMeasurement"/>
+				<element ref="pidx:MaximumMeasurement"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Meter">
+		<complexType>
+			<sequence>
+				<element ref="pidx:MeterNumber"/>
+				<element ref="pidx:OpenReading" minOccurs="0"/>
+				<element ref="pidx:CloseReading" minOccurs="0"/>
+				<element ref="pidx:MeterQuantity"/>
+				<element ref="pidx:MeterFactor"/>
+				<element ref="pidx:MeterDistributionPercent" minOccurs="0"/>
+				<element ref="pidx:ProverReport" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MeterDistributionPercent" type="decimal"/>
+	<element name="MeterFactor" type="decimal"/>
+	<element name="MeterNumber" type="string"/>
+	<element name="MethodOfHandlingCode" type="pidx:MethodOfHandlingCodeType"/>
+	<element name="Microseparometer" type="string"/>
+	<element name="MinimumQuantity" type="pidx:QuantityType">
+		<annotation>
+			<documentation>Smallest quantity allowed per Letter of Credit.</documentation>
+		</annotation>
+	</element>
+	<element name="MinimumMeasurement" type="decimal"/>
+	<element name="MixedRateIndicator" type="string"/>
+	<element name="MonetaryAmount" type="decimal">
+		<annotation>
+			<documentation>Holds the actual monetary amount.</documentation>
+		</annotation>
+	</element>
+	<element name="NetQuantity">
+		<annotation>
+			<documentation>A numeric signed field which represents the net (metered) quantity of product loaded. Since this is a signed field, negative values are allowed. Negative values could mean: a cancelled transaction, receipt of product into a terminal, etc.</documentation>
+			<documentation>This represents a combination of the following 2 fields in the PDXB v3 record set: 'Net Quantity or Temperature / Gravity' (field 38) and 'NetCreditSign'.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="decimal">
+					<attribute name="QuantityUnitOfMeasurement" type="pidx:QuantityUnitOfMeasurementCodeType"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="NetVolume" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The net value of volumetric measure.</documentation>
+		</annotation>
+	</element>
+	<element name="NetWeight" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The weight of the lading.</documentation>
+		</annotation>
+	</element>
+	<element name="NominationStatusCode" type="pidx:StatusCodeType"/>
+	<element name="NotificationCode" type="pidx:NotificationCodeType"/>
+	<element name="NumberOfCopies" type="integer">
+		<annotation>
+			<documentation>The number of copies of the documentation.</documentation>
+		</annotation>
+	</element>
+	<element name="NumberOfOriginals" type="integer">
+		<annotation>
+			<documentation>The number of originals of the documentation.</documentation>
+		</annotation>
+	</element>
+	<element name="NumberOfUnits" type="pidx:QuantityType">
+		<annotation>
+			<documentation>Number of units required to deliver the requested quantity, whenever the packaging does not have a fixed relationship to the quantity. </documentation>
+		</annotation>
+	</element>
+	<element name="ObservedDensity" type="decimal"/>
+	<element name="ObservedTemperature">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Temperature"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="OCSGNumber" type="string"/>
+	<element name="OffendingMessageComponent">
+		<complexType>
+			<sequence>
+				<element ref="pidx:GlobalMessageComponentCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="OpenDate" type="date"/>
+	<element name="OrderCancelFlag" type="boolean"/>
+	<element name="OrderChangeCancelLineItems" type="pidx:OrderLineItemsType"/>
+	<element name="OrderResponseLineItems" type="pidx:OrderResponseLineItemsType"/>
+	<element name="OrderStatusRequestLineItems" type="pidx:OrderStatusLineItemsRequestType"/>
+	<element name="OrderStatusResponseLineItems" type="pidx:OrderStatusResponseLineItemsType"/>
+	<element name="OpenReading" type="decimal"/>
+	<element name="OrderChangeDate" type="date"/>
+	<element name="OrderChangeNumber" type="string"/>
+	<element name="OrderCode" type="string">
+		<annotation>
+			<documentation>System code used in some ERP system which indicates the purpose of the order.</documentation>
+		</annotation>
+	</element>
+	<element name="OrderDate" type="dateTime">
+		<annotation>
+			<documentation>The date/time of the order.</documentation>
+		</annotation>
+	</element>
+	<element name="OrderID" type="string">
+		<annotation>
+			<documentation>Proprietary order identifier used by some ERP systems.</documentation>
+		</annotation>
+	</element>
+	<element name="OrderLineItems" type="pidx:OrderLineItemsType"/>
+	<element name="OrderNumber" type="string">
+		<annotation>
+			<documentation>The identifier of an Order instance.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="OrderQuantity" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The count of product in a transaction as attached to a given unit of measure.</documentation>
+		</annotation>
+	</element>
+	<element name="OrderResponseDate" type="date"/>
+	<element name="OrderResponseNumber" type="string"/>
+	<element name="OrderType" type="string">
+		<annotation>
+			<documentation>The type of purchase order, such as "Blanket", "Contract", etc.</documentation>
+		</annotation>
+	</element>
+	<element name="OriginLocationDescription" type="string"/>
+	<element name="OriginLocationIdentifier">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="identifierIndicator" type="pidx:IdentifierIndicatorType" use="optional"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="OriginLocationInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:OriginLocationIdentifier" maxOccurs="unbounded"/>
+				<element ref="pidx:OriginLocationDescription" minOccurs="0"/>
+				<element ref="pidx:AddressInformation" minOccurs="0"/>
+				<element ref="pidx:GeographicalInformation" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PackageDetail">
+		<annotation>
+			<documentation>Structure containing information on the Packaging of the lading.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:LineItemNumber" minOccurs="0"/>
+				<element ref="pidx:ProductInformation" minOccurs="0"/>
+				<element ref="pidx:PackageType" minOccurs="0"/>
+				<element ref="pidx:PackageLevel" minOccurs="0"/>
+				<element ref="pidx:PackagingQuantity" minOccurs="0"/>
+				<element ref="pidx:ShippingLabelNumber" minOccurs="0"/>
+				<element ref="pidx:PackageWeight" minOccurs="0"/>
+				<element ref="pidx:SubUnitCount" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PackageLevel" type="string">
+		<annotation>
+			<documentation>Indication of the level of packaging specified.</documentation>
+		</annotation>
+	</element>
+	<element name="PackageType" type="string">
+		<annotation>
+			<documentation>Generally describes the type of containerization, boxing, shrink wrapping or other such procedures to prepare and ship products on carriers.</documentation>
+		</annotation>
+	</element>
+	<element name="PackageWeight" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The gross weight of the package.</documentation>
+		</annotation>
+	</element>
+	<element name="PackagingCharacteristicCode" type="pidx:PackaginCharacteristicCodeType"/>
+	<element name="PackagingCharacteristicDescription" type="string"/>
+	<element name="PackagingInformation">
+		<annotation>
+			<documentation>Information about the type of packaging available as part of the product. This is generally viewed as one of the features of the product as opposed to "package" which is what is actually done as the time of shipping to prepare and send product(s) on carriers. Allows recursive access to subpackaging information.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:ProductInformation" minOccurs="0"/>
+				<element ref="pidx:PackagingQuantity" minOccurs="0"/>
+				<element ref="pidx:PackageType" minOccurs="0"/>
+				<element ref="pidx:PackageWeight" minOccurs="0"/>
+				<element ref="pidx:PackagingLabel" minOccurs="0"/>
+				<element ref="pidx:SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PackagingLabel" type="string">
+		<annotation>
+			<documentation>The marking put on a product/packaging combination so that it can be identified and handled.</documentation>
+		</annotation>
+	</element>
+	<element name="PackagingQuantity" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The quantity per package.</documentation>
+		</annotation>
+	</element>
+	<element name="PackListRequirements" type="string">
+		<annotation>
+			<documentation>Free-form field to place any requirements for the pack list.</documentation>
+		</annotation>
+	</element>
+	<element name="ParentManufacturingIdentifier" type="string">
+		<annotation>
+			<documentation>The unique number assigned to the lading by the parent manufacturer.</documentation>
+		</annotation>
+	</element>
+	<element name="PartnerConfirmationStatus" type="pidx:PartnerConfirmationStatusType"/>
+	<element name="PartnerDefinedMeasure">
+		<complexType>
+			<sequence>
+				<element ref="pidx:PartnerDefinedMeasureDescription" minOccurs="0"/>
+				<element ref="pidx:PartnerDefinedMeasureIdentifier"/>
+				<element ref="pidx:Measurement"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PartnerDefinedMeasureDescription" type="string"/>
+	<element name="PartnerDefinedMeasureIdentifier">
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="partnerDefinedMeasureIdentifierIndicator" type="pidx:PartnerDefinedMeasureIdentifierIndicatorType" use="optional"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="PartnerEntityIdentifier" type="string">
+		<annotation>
+			<documentation>An EPA assigned identifier for a company participating upstream of, and including, a truck rack.</documentation>
+		</annotation>
+	</element>
+	<element name="PartnerFacilityIdentifier" type="string">
+		<annotation>
+			<documentation>An EPA assigned identifier for a group of assets owned by the entity participating upstream of, and including, a truck rack.</documentation>
+		</annotation>
+	</element>
+	<element name="PartnerIdentifier">
+		<annotation>
+			<documentation>A unique businesss identifer, possibly DUNS Number.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="partnerIdentifierIndicator" type="pidx:PartnerIdentifierIndicatorType" use="required"/>
+					<attribute name="definitionOfOther" type="string" use="optional">
+						<annotation>
+							<documentation>Identifies what "Other" is if chosen from an attribute enumeration list</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="PartnerInformation">
+		<annotation>
+			<documentation>Structure which contains the information necessary to describe a business partner.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:PartnerIdentifier" maxOccurs="unbounded"/>
+				<element ref="pidx:PartnerName" minOccurs="0"/>
+				<element ref="pidx:AddressInformation" minOccurs="0"/>
+				<element ref="pidx:ContactInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:TaxInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:URL" minOccurs="0"/>
+				<element ref="pidx:AccountInformation" minOccurs="0"/>
+			</sequence>
+			<attribute name="partnerRoleIndicator" type="pidx:PartnerRoleIndicatorType" use="required"/>
+			<attribute name="definitionOfOther" type="string" use="optional">
+				<annotation>
+					<documentation>Identifies what "Other" is if chosen from an attribute enumeration list</documentation>
+				</annotation>
+			</attribute>
+		</complexType>
+	</element>
+	<element name="PartnerName" type="string">
+		<annotation>
+			<documentation>The name of the partner.</documentation>
+		</annotation>
+	</element>
+	<element name="PaymentTerms">
+		<annotation>
+			<documentation>Structure containing information on the terms for monetary settlement for a sale.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:PaymentTermsOfSale" minOccurs="0"/>
+				<element ref="pidx:Description" minOccurs="0"/>
+				<element ref="pidx:PaymentTermsBasisDateCode" minOccurs="0"/>
+				<element ref="pidx:PaymentTermsBasisDate" minOccurs="0"/>
+				<element ref="pidx:TermsNetDays" minOccurs="0"/>
+				<element ref="pidx:PercentOfInvoicePayable" minOccurs="0"/>
+				<element ref="pidx:Discounts" minOccurs="0"/>
+				<element ref="pidx:Deferred" minOccurs="0"/>
+				<element ref="pidx:Penalty" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PaymentTermsBasisDate" type="date">
+		<annotation>
+			<documentation>The date from which payment terms are calculated.</documentation>
+		</annotation>
+	</element>
+	<element name="PaymentTermsBasisDateCode" type="pidx:PaymentTermsBasisDateCodeType"/>
+	<element name="PaymentTermsOfSale" type="string">
+		<annotation>
+			<documentation>The conditions under which a sale is transacted including product
+				specifications, delivery and payment in addition to other agreed upon factors.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="Penalty" type="string">
+		<annotation>
+			<documentation>A percent used to calculate the penalty on any unpaid balance.</documentation>
+		</annotation>
+	</element>
+	<element name="PercentActive" type="decimal">
+		<annotation>
+			<documentation>The dry content in a liquid solution.</documentation>
+		</annotation>
+	</element>
+	<element name="PercentDeferredPayable" type="decimal">
+		<annotation>
+			<documentation>Percentage of an amount due that is deferred for 										payment.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="PercentDiscount" type="decimal">
+		<annotation>
+			<documentation>Discount applied to the purchase as a percentage</documentation>
+		</annotation>
+	</element>
+	<element name="PercentLoaded" type="decimal"/>
+	<element name="PercentOfInvoicePayable" type="decimal"/>
+	<element name="PercentQualifierCode" type="decimal"/>
+	<element name="PersonnelIdentifier" type="string"/>
+	<element name="PersonnelInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:PersonnelName" minOccurs="0"/>
+				<element ref="pidx:CompanyName" minOccurs="0"/>
+				<element ref="pidx:PersonnelIdentifier" minOccurs="0"/>
+				<element ref="pidx:TimeWorked" minOccurs="0"/>
+				<element ref="pidx:JobDescription" minOccurs="0"/>
+				<element ref="pidx:Comment" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PersonnelName" type="string"/>
+	<element name="PhoneNumber" type="string"/>
+	<element name="PhoneNumberExtension" type="string"/>
+	<element name="PipelineCustodyEvent" type="pidx:YesNoType"/>
+	<element name="PipelineCycle" type="string"/>
+	<element name="PipelineCycleYear" type="string"/>
+	<element name="PipelineEvent" type="pidx:PipelineEventType"/>
+	<element name="PipelineEventDescription" type="string"/>
+	<element name="PipelineEventInformation" type="pidx:PipelineEventInformationType"/>
+	<element name="PipelineEventStatus" type="string"/>
+	<element name="PipelineEventVolumeAffect" type="pidx:PipelineEventVolumeAffectType"/>
+	<element name="PipelineLineDescription" type="string"/>
+	<element name="PipelineLineNumber" type="string"/>
+	<element name="PipelineNominationChangeCode" type="pidx:PipelineNominationChangeCodeType"/>
+	<element name="PipelineNominationChangeDateTime" type="dateTime"/>
+	<element name="PipelineNominationChangeNumber" type="string"/>
+	<element name="PipelineNominationResponseDateTime" type="dateTime"/>
+	<element name="PipelineNominationResponseNumber" type="string"/>
+	<element name="PipelineNominationResponseReasonCode" type="string"/>
+	<element name="PipelineNominationVersionNumber" type="integer"/>
+	<element name="PipelineSCD" type="string"/>
+	<element name="PipelineSequence" type="string"/>
+	<element name="POBoxNumber" type="string"/>
+	<element name="PortOfDischarge">
+		<annotation>
+			<documentation>The port or location of unloading</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="codeListName" type="string" use="optional">
+						<annotation>
+							<documentation>Indicates the organizational body who assigned the list of codes</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="PostalCode" type="string">
+		<annotation>
+			<documentation>The code assigned by local postal authorities to delivery addresses.</documentation>
+		</annotation>
+	</element>
+	<element name="PostalCountry">
+		<annotation>
+			<documentation>The name of the country.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:CountryCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PortOfLoading">
+		<annotation>
+			<documentation>The port of departure or loading</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="codeListName" type="string" use="optional">
+						<annotation>
+							<documentation>Indicates the organizational body who assigned the list of codes</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="PostBoxNumber" type="string">
+		<annotation>
+			<documentation>The number of a post office box.</documentation>
+		</annotation>
+	</element>
+	<element name="Pressure" type="decimal"/>
+	<element name="PriceAmount">
+		<annotation>
+			<documentation>The monetary price of an item in a stated currency.</documentation>
+		</annotation>
+		<complexType>
+			<complexContent>
+				<extension base="pidx:MonetaryType">
+					<attribute name="priceType" type="pidx:PriceType" use="optional">
+						<annotation>
+							<documentation>Indicates whether a price is gross or net.</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="definitionOfOther" type="string" use="optional">
+						<annotation>
+							<documentation>Identifies what "Other" is if chosen from an attribute enumeration list</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="PriceBasis">
+		<annotation>
+			<documentation>The rules upon which pricing is based in a transaction.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<choice>
+					<element ref="pidx:Measurement"/>
+					<element ref="pidx:MeasurementRange"/>
+				</choice>
+				<element ref="pidx:UnitOfMeasureCode"/>
+				<element ref="pidx:BasisDescription" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PriceReason" type="string">
+		<annotation>
+			<documentation>A reason indicating justification for the price.</documentation>
+		</annotation>
+	</element>
+	<element name="Pricing">
+		<annotation>
+			<documentation>Structure which contains price information about the monetary amount, the currency and price basis for it.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:UnitPrice"/>
+				<element ref="pidx:PriceBasis" minOccurs="0"/>
+				<element ref="pidx:PriceReason" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ProductSubLineItems">
+		<annotation>
+			<documentation>Children of product line items to add additional details to product line items.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:SubLineItemNumber"/>
+				<element ref="pidx:ManufacturingIdentificationDetails" minOccurs="0"/>
+				<element ref="pidx:GrossVolume" minOccurs="0"/>
+				<element ref="pidx:GrossWeight" minOccurs="0"/>
+				<element ref="pidx:NetWeight" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PrimaryCurrency">
+		<complexType>
+			<sequence>
+				<element ref="pidx:CurrencyCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ProductCharacteristics" type="pidx:ProductCharacteristicsType"/>
+	<element name="ProductDescription" type="pidx:DescriptionType">
+		<annotation>
+			<documentation>The description of the product in a catalog, transaction or a posting.</documentation>
+		</annotation>
+	</element>
+	<element name="ProductGradeDescription" type="pidx:DescriptionType">
+		<annotation>
+			<documentation>The quality grade of the product being bought or sold. This is a method to discriminate products that may not be of standard quality.</documentation>
+		</annotation>
+	</element>
+	<element name="ProductIdentifier">
+		<annotation>
+			<documentation>The unique code or number for a specific product.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="assigningOrganization" type="pidx:AssigningOrganizationType" use="required">
+						<annotation>
+							<documentation>The organization who assigns a particular identifier for a product or partner.</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="definitionOfOther" type="string" use="optional">
+						<annotation>
+							<documentation>Identifies what "Other" is if chosen from an attribute enumeration list</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="ProductInformation">
+		<annotation>
+			<documentation>Structure which contains the information for a given product.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:ProductIdentifier" maxOccurs="unbounded"/>
+				<element ref="pidx:ProductDescription" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:ProductGradeDescription" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ProprietaryShipmentTrackingIdentifier" type="string"/>
+	<element name="ProverReport" type="string"/>
+	<element name="PurgedQuantity" type="pidx:QuantityType"/>
+	<element name="PurchaseOrderInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:PurchaseOrderNumber"/>
+				<element ref="pidx:PurchaseOrderIssuedDate" minOccurs="0"/>
+				<element ref="pidx:PurchaseOrderTypeCode" minOccurs="0"/>
+				<element ref="pidx:ReleaseNumber" minOccurs="0"/>
+				<element ref="pidx:SalesOrderNumber" minOccurs="0"/>
+				<element ref="pidx:RevisionNumber" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PurchaseOrderIssuedDate" type="date"/>
+	<element name="PurchaseOrderLineItemNumber" type="string"/>
+	<element name="PurchaseOrderNumber" type="string"/>
+	<element name="PurchaseOrderSubLineItemNumber" type="string"/>
+	<element name="PurchaseOrderTypeCode" type="pidx:PurchaseOrderTypeCodeType"/>
+	<element name="PurchaseOrderReferenceInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:OrderNumber"/>
+				<element ref="pidx:OrderDate" minOccurs="0"/>
+				<element ref="pidx:LineItemNumber" minOccurs="0"/>
+				<element ref="pidx:ChangeSequenceNumber" minOccurs="0"/>
+				<element ref="pidx:ReleaseNumber" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Quantity" type="decimal">
+		<annotation>
+			<documentation>The quantity of an item.</documentation>
+		</annotation>
+	</element>
+	<element name="QuoteDate" type="date"/>
+	<element name="QuotedQuantity" type="pidx:QuantityType"/>
+	<element name="QuoteIdentifier" type="string">
+		<annotation>
+			<documentation>A reference or unique number or code specifying a given quote.</documentation>
+		</annotation>
+	</element>
+	<element name="QuoteNotificationDate" type="date"/>
+	<element name="QuoteNotificationNumber" type="string"/>
+	<element name="QuoteNumber" type="string"/>
+	<element name="QuoteRequestDate" type="date"/>
+	<element name="QuoteRequestInformation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:QuoteRequestNumber"/>
+				<element ref="pidx:QuoteRequestDate"/>
+				<element ref="pidx:RevisionNumber" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="QuoteRequestLineItemNumber" type="string"/>
+	<element name="QuoteRequestNumber" type="string"/>
+	<element name="QuoteTotal" type="pidx:MonetaryType"/>
+	<element name="QuoteTypeCode" type="pidx:QuoteTypeCodeType"/>
+	<element name="Range" type="string"/>
+	<element name="RateOfExchangeDetail">
+		<complexType>
+			<sequence>
+				<element ref="pidx:ReferenceCurrency"/>
+				<element ref="pidx:TargetCurrency"/>
+				<element ref="pidx:ExchangeRate"/>
+				<element ref="pidx:DateOfRateOfExchange" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ReadingQuantity" type="pidx:QuantityType"/>
+	<element name="ReceiptDate" type="dateTime">
+		<annotation>
+			<documentation>The date/time of the Receipt.</documentation>
+		</annotation>
+	</element>
+	<element name="ReceiptLineItems" type="pidx:ReceiptLineItemsType"/>
+	<element name="ReferenceCurrency">
+		<complexType>
+			<sequence>
+				<element ref="pidx:CurrencyCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ReferenceInformation">
+		<annotation>
+			<documentation>Additional reference information or supporting information for a referenced document.
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:ReferenceNumber" minOccurs="0"/>
+				<element ref="pidx:Description" minOccurs="0"/>
+			</sequence>
+			<attribute name="referenceInformationIndicator" type="pidx:ReferenceInformationIndicatorType" use="required"/>
+		</complexType>
+	</element>
+	<element name="ReferenceItem" type="string">
+		<annotation>
+			<documentation>Identifies a specific line item in the reference document.</documentation>
+		</annotation>
+	</element>
+	<element name="ReferenceNumber" type="string">
+		<annotation>
+			<documentation>Reference number of the transaction that allow conformations to refer to original updates.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="Region" type="string"/>
+	<element name="RegionName" type="string">
+		<annotation>
+			<documentation>The name of the region.</documentation>
+		</annotation>
+	</element>
+	<element name="ReleaseNumber" type="string"/>
+	<element name="RequestedDocument">
+		<annotation>
+			<documentation>Structure which contains information about references to documents.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:DocumentReference" minOccurs="0"/>
+				<element ref="pidx:DocumentDeliveryInformation" minOccurs="0"/>
+				<element ref="pidx:NumberOfOriginals" minOccurs="0"/>
+				<element ref="pidx:NumberOfCopies" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RequestQuoteResponse">
+		<complexType>
+			<sequence>
+				<element ref="pidx:OpenDate" minOccurs="0"/>
+				<element ref="pidx:CloseDate" minOccurs="0"/>
+				<element ref="pidx:ContactInformation" minOccurs="0"/>
+				<element ref="pidx:ResponseInstructions" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RequestRequisitionReturnDate" type="date"/>
+	<element name="RequestRequisitionReturnNumber" type="string"/>
+	<element name="RequestRequisitionReturnQuantity" type="pidx:QuantityType"/>
+	<element name="RequestRequisitionReturnTotal" type="pidx:MonetaryType"/>
+	<element name="ResponseInstructions" type="string"/>
+	<element name="ResponseReason" type="pidx:ResponseReasonType">
+		<annotation>
+			<documentation>Code explaining a response to the order or line item.</documentation>
+		</annotation>
+	</element>
+	<element name="ResultingOrderType">
+		<complexType>
+			<sequence>
+				<element ref="pidx:PurchaseOrderTypeCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RevisionNumber" type="string">
+		<annotation>
+			<documentation>A number that provides for sequential numbering of messages.</documentation>
+		</annotation>
+	</element>
+	<element name="RigIdentifier">
+		<annotation>
+			<documentation>The unique code or number for a specific rig.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="rigIdentifierType" type="string" use="optional">
+						<annotation>
+							<documentation>Identifies which rig identifier is being given.</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="Routing" type="string">
+		<annotation>
+			<documentation>The shipping route to be provided for transportation of product.</documentation>
+		</annotation>
+	</element>
+	<element name="RoutingSequenceCode" type="pidx:RoutingSequenceCodeType"/>
+	<element name="SalesOrderNumber" type="string"/>
+	<element name="SampleMeasures">
+		<complexType>
+			<sequence>
+				<element ref="pidx:PartnerDefinedMeasure" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:ObservedDensity" minOccurs="0"/>
+				<element ref="pidx:ObservedTemperature" minOccurs="0"/>
+				<element ref="pidx:APIGravity" minOccurs="0"/>
+				<element ref="pidx:AverageTemperature" minOccurs="0"/>
+				<element ref="pidx:AveragePressure" minOccurs="0"/>
+				<element ref="pidx:AverageFlowRate" minOccurs="0"/>
+				<element ref="pidx:CorrectedGravity" minOccurs="0"/>
+				<element ref="pidx:CorrectedTemperatureLiquidFactor" minOccurs="0"/>
+				<element ref="pidx:CorrectedPressureLiquidFactor" minOccurs="0"/>
+				<element ref="pidx:CorrectedDensity" minOccurs="0"/>
+				<element ref="pidx:CompositeFactor" minOccurs="0"/>
+				<element ref="pidx:PercentLoaded" minOccurs="0"/>
+				<element ref="pidx:FlashTemperature" minOccurs="0"/>
+				<element ref="pidx:Haze" minOccurs="0"/>
+				<element ref="pidx:LineItemColor" minOccurs="0"/>
+				<element ref="pidx:Microseparometer" minOccurs="0"/>
+				<element ref="pidx:IncrustationFactor" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ScheduleDateTime" type="dateTime">
+		<annotation>
+			<documentation>The date/time on which the product is scheduled to be delivered.</documentation>
+		</annotation>
+	</element>
+	<element name="ScheduleDateTimeRange" type="pidx:DateTimeRangeType">
+		<annotation>
+			<documentation>The date/time range between which the product is scheduled to be delivered.</documentation>
+		</annotation>
+	</element>
+	<element name="ScheduleRequestDateTime" type="dateTime"/>
+	<element name="ScheduleStartDateTime" type="dateTime"/>
+	<element name="ScheduleStopDateTime" type="dateTime"/>
+	<element name="SealNumber" type="string">
+		<annotation>
+			<documentation>Unique number on seal such as that used to close a shipment.</documentation>
+		</annotation>
+	</element>
+	<element name="SecondCurrency">
+		<complexType>
+			<sequence>
+				<element ref="pidx:CurrencyCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Section" type="string"/>
+	<element name="SellersCurrency">
+		<annotation>
+			<documentation>Indicates the currency of the seller.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:CurrencyCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="SequenceNumber" type="integer"/>
+	<element name="ServiceDateTime">
+		<complexType>
+			<simpleContent>
+				<extension base="dateTime">
+					<attribute name="dateTypeIndicator" type="pidx:DateTypeIndicatorType" use="required"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="ServiceLevelCode" type="string"/>
+	<element name="ShipDate" type="dateTime"/>
+	<element name="ShipmentTerms">
+		<annotation>
+			<documentation>Structure containing information on the terms for shipment.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:ShipmentTermsCode"/>
+				<element ref="pidx:ShipmentTermsLocation" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ShipmentIdentifier" type="string">
+		<annotation>
+			<documentation>A unique identifier for the shipment.</documentation>
+		</annotation>
+	</element>
+	<element name="ShipmentIndicator" type="string"/>
+	<element name="ShipmentMethodOfPayment" type="pidx:ShipmentMethodOfPaymentType">
+		<annotation>
+			<documentation>Payment terms for transportation charges.</documentation>
+		</annotation>
+	</element>
+	<element name="ShipmentPackaging">
+		<annotation>
+			<documentation>Structure containing details of the lading packaging.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:PackageDetail" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ShipmentTermsCode" type="string">
+		<annotation>
+			<documentation>The terms under which a product is shipped, such as "Freight Prepaid", "FOB", etc.</documentation>
+		</annotation>
+	</element>
+	<element name="ShipmentTermsLocation">
+		<annotation>
+			<documentation>The terms under which a product is shipped, such as "Freight Prepaid", "FOB", etc.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="codeListName" type="string" use="optional">
+						<annotation>
+							<documentation>Indicates the organizational body who assigned the list of codes</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="ShipNoticeEquipmentDetails">
+		<annotation>
+			<documentation>Structure containing the equipment details related to the AdvancedShipNotice message.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:LineItemNumber" minOccurs="0"/>
+				<element ref="pidx:EquipmentIdentifier" minOccurs="0"/>
+				<element ref="pidx:CarrierEquipmentCode" minOccurs="0"/>
+				<element ref="pidx:EquipmentOwnership" minOccurs="0"/>
+				<element ref="pidx:NumberOfUnits" minOccurs="0"/>
+				<element ref="pidx:SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:Height" minOccurs="0"/>
+				<element ref="pidx:Width" minOccurs="0"/>
+				<element ref="pidx:Length" minOccurs="0"/>
+				<element ref="pidx:NetWeight" minOccurs="0"/>
+				<element ref="pidx:TareWeight" minOccurs="0"/>
+				<element ref="pidx:GrossWeight" minOccurs="0"/>
+				<element ref="pidx:NetVolume" minOccurs="0"/>
+				<element ref="pidx:GrossVolume" minOccurs="0"/>
+				<element ref="pidx:SealNumber" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:EquipmentLoadEmptyStatus" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ShippedQuantity" type="pidx:QuantityType">
+		<annotation>
+			<documentation>Scheduled or actual shipped product speciified in a given unit of measure.</documentation>
+		</annotation>
+	</element>
+	<element name="ShippingAmount" type="pidx:MonetaryType"/>
+	<element name="ShippingLabelNumber" type="string">
+		<annotation>
+			<documentation>The identification number identifying a specific package</documentation>
+		</annotation>
+	</element>
+	<element name="ShipWithPurchaseOrder" type="boolean">
+		<annotation>
+			<documentation>Flag indicating that a shipment of product should include the purchase order document or a copy 			thereof.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="SpecialHandlingCode" type="string"/>
+	<element name="SpecialInstructions">
+		<annotation>
+			<documentation>A free-form textual description of requirements.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="instructionIndicator" type="pidx:InstructionIndicatorType" use="optional">
+						<annotation>
+							<documentation>Identifies what kind of special instruction is being given.</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="definitionOfOther" type="string" use="optional">
+						<annotation>
+							<documentation>Identifies what "Other" is if chosen from an attribute enumeration list</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="SpecialInvoicePreference" type="pidx:SpecialInvoicePreferenceType">
+		<annotation>
+			<documentation>Non-standard billing options or requirements as requested by the buyer.</documentation>
+		</annotation>
+	</element>
+	<element name="SpecialServicesAmount" type="pidx:MonetaryType"/>
+	<element name="SpecialServicesRequest" type="string">
+		<annotation>
+			<documentation>Special request from the Buyer.</documentation>
+		</annotation>
+	</element>
+	<element name="StateLease" type="string"/>
+	<element name="StateProvince" type="string">
+		<annotation>
+			<documentation>The name of the state or province.</documentation>
+		</annotation>
+	</element>
+	<element name="StatusCode" type="pidx:StatusCodeType">
+		<annotation>
+			<documentation>Indicates whether the order or line item has bee accepted, rejected, or is pending.</documentation>
+		</annotation>
+	</element>
+	<element name="StreetDirection" type="pidx:AlphaLength1to2">
+		<annotation>
+			<documentation>The direction indicator for the street in an address</documentation>
+		</annotation>
+	</element>
+	<element name="StreetName" type="string">
+		<annotation>
+			<documentation>The name of the street in an address.</documentation>
+		</annotation>
+	</element>
+	<element name="StorageTankIdentifier" type="string">
+		<annotation>
+			<documentation>A unique indentifier of a storage tank/silo/vessel.</documentation>
+		</annotation>
+	</element>
+	<element name="SubLineItemNumber" type="string">
+		<annotation>
+			<documentation>The sub-line item number relating to the primary line item referenced in the message.</documentation>
+		</annotation>
+	</element>
+	<element name="SubUnitCount" type="string">
+		<annotation>
+			<documentation>Count on subunits of equipment for logistics transactions.</documentation>
+		</annotation>
+	</element>
+	<element name="SubTotalAmount">
+		<complexType>
+			<complexContent>
+				<extension base="pidx:MonetaryType">
+					<attribute name="subTotalIndicator" type="pidx:SubTotalIndicatorType" use="required"/>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="SupplementaryUnits" type="int"/>
+	<element name="SystemAccountCode" type="string">
+		<annotation>
+			<documentation>Internal account code used by some ERP systems.</documentation>
+		</annotation>
+	</element>
+	<element name="TankCapacityQuantity" type="pidx:QuantityType"/>
+	<element name="TankCloseMeasures">
+		<complexType>
+			<sequence>
+				<element ref="pidx:AdjustmentQuantity" minOccurs="0"/>
+				<element ref="pidx:AmbientTemperature" minOccurs="0"/>
+				<element ref="pidx:APIGravity" minOccurs="0"/>
+				<element ref="pidx:CorrectedQuantity" minOccurs="0"/>
+				<element ref="pidx:CorrectedGravity" minOccurs="0"/>
+				<element ref="pidx:TankDateTime" minOccurs="0"/>
+				<element ref="pidx:GaugeReadingMeasure" minOccurs="0"/>
+				<element ref="pidx:GaugeQuantity"/>
+				<element ref="pidx:ReadingQuantity" minOccurs="0"/>
+				<element ref="pidx:TankWaterQuantity" minOccurs="0"/>
+				<element ref="pidx:TankWaterMeasure" minOccurs="0"/>
+				<element ref="pidx:TankTemperature" minOccurs="0"/>
+				<element ref="pidx:AdjustedRoofQuantity" minOccurs="0"/>
+				<element ref="pidx:CorrectedTemperatureLiquidFactor" minOccurs="0"/>
+				<element ref="pidx:PartnerDefinedMeasure" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="TankDateTime" type="dateTime"/>
+	<element name="TankHeight">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Measurement"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="TankMeasures">
+		<complexType>
+			<sequence>
+				<element ref="pidx:TankHeight" minOccurs="0"/>
+				<element ref="pidx:TankCapacityQuantity" minOccurs="0"/>
+				<element ref="pidx:PartnerDefinedMeasure" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:TankOpenMeasures"/>
+				<element ref="pidx:TankCloseMeasures"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="TankOpenMeasures">
+		<complexType>
+			<sequence>
+				<element ref="pidx:AdjustmentQuantity" minOccurs="0"/>
+				<element ref="pidx:AmbientTemperature" minOccurs="0"/>
+				<element ref="pidx:APIGravity" minOccurs="0"/>
+				<element ref="pidx:CorrectedQuantity" minOccurs="0"/>
+				<element ref="pidx:CorrectedGravity" minOccurs="0"/>
+				<element ref="pidx:TankDateTime" minOccurs="0"/>
+				<element ref="pidx:GaugeReadingMeasure" minOccurs="0"/>
+				<element ref="pidx:GaugeQuantity"/>
+				<element ref="pidx:ReadingQuantity" minOccurs="0"/>
+				<element ref="pidx:TankWaterQuantity" minOccurs="0"/>
+				<element ref="pidx:TankWaterMeasure" minOccurs="0"/>
+				<element ref="pidx:TankTemperature" minOccurs="0"/>
+				<element ref="pidx:AdjustedRoofQuantity" minOccurs="0"/>
+				<element ref="pidx:CorrectedTemperatureLiquidFactor" minOccurs="0"/>
+				<element ref="pidx:PartnerDefinedMeasure" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="TankTemperature">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Temperature"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="TankWaterMeasure">
+		<complexType>
+			<sequence>
+				<element ref="pidx:Measurement"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="TankWaterQuantity" type="pidx:QuantityType"/>
+	<element name="TareWeight" type="pidx:QuantityType">
+		<annotation>
+			<documentation>Weight of the equipment unit in unladen state.</documentation>
+		</annotation>
+	</element>
+	<element name="TargetCurrency">
+		<complexType>
+			<sequence>
+				<element ref="pidx:CurrencyCode"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Tax" type="pidx:TaxType"/>
+	<element name="TaxAmount" type="pidx:MonetaryType"/>
+	<element name="TaxBasis" type="string"/>
+	<element name="TaxBasisAmount" type="pidx:MonetaryType">
+		<annotation>
+			<documentation>The monetary amount on which tax is calculated. It is usually in context with whatever is being taxed.</documentation>
+		</annotation>
+	</element>
+	<element name="TaxCertificateNumber">
+		<annotation>
+			<documentation>The identifying number for a tax certificate such as tax exemption, sales and use tax certificate or 			other such document.
+			</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="taxCertificateType" type="string" use="optional">
+						<annotation>
+							<documentation>Indicates which kind of tax certificate is being given.</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="TaxCertificateType" type="string"/>
+	<element name="TaxExemptCode" type="pidx:TaxExemptCodeType"/>
+	<element name="TaxIdentifierNumber">
+		<annotation>
+			<documentation>Unique number or code issued to an organization by a governmental or regulatory body identifying that 			entity for tax purposes.
+			</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="taxType" type="string" use="optional">
+						<annotation>
+							<documentation>Indicates the kind of tax.</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="TaxInformation">
+		<annotation>
+			<documentation>Structure which contains information concerning tax data.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:TaxIdentifierNumber"/>
+				<element ref="pidx:Jurisdiction" minOccurs="0"/>
+				<element ref="pidx:TaxCertificateNumber" minOccurs="0"/>
+				<element ref="pidx:TaxBasisAmount" minOccurs="0"/>
+				<element ref="pidx:TaxRate" minOccurs="0"/>
+				<element ref="pidx:DateTimeRange" minOccurs="0"/>
+				<element ref="pidx:TaxCertificateType" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="TaxLocation">
+		<complexType>
+			<sequence>
+				<element ref="pidx:LocationIdentifier" minOccurs="0"/>
+				<element ref="pidx:LocationName" minOccurs="0"/>
+				<element ref="pidx:LocationDescription" minOccurs="0"/>
+				<element ref="pidx:AddressInformation" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="TaxRate" type="decimal">
+		<annotation>
+			<documentation>The percentage or monetary amount charged on a transaction.</documentation>
+		</annotation>
+	</element>
+	<element name="TaxReference" type="string"/>
+	<element name="TaxSummary">
+		<complexType>
+			<complexContent>
+				<extension base="pidx:TaxType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="TaxTypeCode" type="pidx:TaxTypeCodeType"/>
+	<element name="TelecomAreaCode" type="string">
+		<annotation>
+			<documentation>The area code within a country or jurisdiction, if needed, to access local telephones within the 			country.
+			</documentation>
+		</annotation>
+	</element>
+	<element name="TelecomCountryCode" type="string">
+		<annotation>
+			<documentation>The dialing code from another country to access the telephone network in another country.</documentation>
+		</annotation>
+	</element>
+	<element name="Telephone">
+		<annotation>
+			<documentation>Structure which contains the information about a telephone number.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:PhoneNumber"/>
+				<element ref="pidx:PhoneNumberExtension" minOccurs="0"/>
+				<element ref="pidx:TelecomCountryCode" minOccurs="0"/>
+				<element ref="pidx:TelecomAreaCode" minOccurs="0"/>
+			</sequence>
+			<attribute name="telephoneIndicator" type="pidx:PhoneType" use="optional"/>
+		</complexType>
+	</element>
+	<element name="TelephoneNumber" type="string">
+		<annotation>
+			<documentation>The phone number.</documentation>
+		</annotation>
+	</element>
+	<element name="Temperature">
+		<complexType>
+			<simpleContent>
+				<extension base="decimal">
+					<attribute name="TemperatureUnitOfMeasurement" type="pidx:TemperatureUnitOfMeasurementCodeType" use="optional"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="TerminalInformation" type="pidx:TerminalInformationType">
+		<annotation>
+			<documentation>Specifies information pertaining to the facility where product is stored and loaded.</documentation>
+		</annotation>
+	</element>
+	<element name="TermsDiscountAmount" type="pidx:MonetaryType"/>
+	<element name="TermsNetDays" type="integer"/>
+	<element name="TimeLogActivity" type="string"/>
+	<element name="TimeLogDateTime" type="dateTime"/>
+	<element name="TimeWorked" type="pidx:QuantityType"/>
+	<element name="ToDate" type="date"/>
+	<element name="ToPartner" type="pidx:CustodyPartnerType">
+		<annotation>
+			<documentation>Information about a trading partner who is taking custody of a product in a custody transfer.</documentation>
+		</annotation>
+	</element>
+	<element name="TotalAmount" type="pidx:MonetaryType"/>
+	<element name="TotalLineItems" type="integer">
+		<annotation>
+			<documentation>The total number of line items</documentation>
+		</annotation>
+	</element>
+	<element name="Township" type="string"/>
+	<element name="TransactionNature" type="string"/>
+	<element name="TransportContainer" type="pidx:TransportContainerType"/>
+	<element name="TransportEvent" type="pidx:TransportEventType"/>
+	<element name="TransportInformation">
+		<annotation>
+			<documentation>Structure containing information defining how product is transported.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:ShipmentMethodOfPayment"/>
+				<element ref="pidx:RoutingSequenceCode" minOccurs="0"/>
+				<element ref="pidx:TransportMethodCode" minOccurs="0"/>
+				<element ref="pidx:PartnerInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:Location" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:ShipmentTermsCode" minOccurs="0"/>
+				<element ref="pidx:Routing" minOccurs="0"/>
+				<element ref="pidx:ServiceLevelCode" minOccurs="0"/>
+				<element ref="pidx:HazardousMaterials" minOccurs="0"/>
+				<element ref="pidx:CarrierEquipmentCode" minOccurs="0"/>
+				<element ref="pidx:TransportName" minOccurs="0"/>
+				<element ref="pidx:TransportMethod" minOccurs="0"/>
+				<element ref="pidx:DocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+			<attribute name="stageIdentifier" type="string" use="optional">
+				<annotation>
+					<documentation>Identifies the stage of the shipping route.</documentation>
+				</annotation>
+			</attribute>
+		</complexType>
+	</element>
+	<element name="TransportMethod">
+		<annotation>
+			<documentation>Mode of transportation used to move product.</documentation>
+		</annotation>
+		<complexType>
+			<simpleContent>
+				<extension base="string">
+					<attribute name="codeListName" type="string" use="optional">
+						<annotation>
+							<documentation>Indicates the organizational body who assigned the list of codes</documentation>
+						</annotation>
+					</attribute>
+				</extension>
+			</simpleContent>
+		</complexType>
+	</element>
+	<element name="TransportMethodCode" type="pidx:TransportMethodCodeType"/>
+	<element name="TransportName" type="string">
+		<annotation>
+			<documentation>The identifier of a specific vessel, truck, railcar, etc.</documentation>
+		</annotation>
+	</element>
+	<element name="UnitOfMeasureCode" type="string"/>
+	<element name="UnitPrice">
+		<complexType>
+			<sequence>
+				<element ref="pidx:MonetaryAmount"/>
+				<element ref="pidx:UnitOfMeasureCode"/>
+				<element ref="pidx:CurrencyCode" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpperLimit" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The greatest amount of product that will be accepted at delivery.</documentation>
+		</annotation>
+	</element>
+	<element name="URL" type="string">
+		<annotation>
+			<documentation>Uniform Resource Locator indicating an internet address.</documentation>
+		</annotation>
+	</element>
+	<element name="ValidityDates">
+		<complexType>
+			<sequence>
+				<element ref="pidx:FromDate"/>
+				<element ref="pidx:ToDate"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="VaporFactor" type="decimal"/>
+	<element name="VesselCapacityQuantity" type="pidx:QuantityType"/>
+	<element name="VesselDescription" type="string"/>
+	<element name="VesselMeasures">
+		<complexType>
+			<sequence>
+				<element ref="pidx:VesselType"/>
+				<element ref="pidx:VesselDescription" minOccurs="0"/>
+				<element ref="pidx:VesselPurged" minOccurs="0"/>
+				<element ref="pidx:VaporFactor" minOccurs="0"/>
+				<element ref="pidx:VesselCapacityQuantity" minOccurs="0"/>
+				<element ref="pidx:VolumeOutageQuantity" minOccurs="0"/>
+				<element ref="pidx:PurgedQuantity" minOccurs="0"/>
+				<element ref="pidx:PartnerDefinedMeasure" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="VesselPurged" type="pidx:YesNoType"/>
+	<element name="VesselType" type="pidx:VesselType"/>
+	<element name="VolumeOutageQuantity" type="pidx:QuantityType"/>
+	<element name="VoyageTripDateTimeRange" type="pidx:DateTimeRangeType">
+		<annotation>
+			<documentation>The date range of the voyage, sailing or trip related to the transportation of the lading.</documentation>
+		</annotation>
+	</element>
+	<element name="VoyageTripNumber" type="string">
+		<annotation>
+			<documentation>The identification number of the voyage or trip, (ie. Train ID, etc.)</documentation>
+		</annotation>
+	</element>
+	<element name="WellCategory" type="pidx:WellCategoryType">
+		<annotation>
+			<documentation>Identifies the category of the well based on a stratification of extraction technologies.</documentation>
+		</annotation>
+	</element>
+	<element name="WellIdentifier" type="pidx:WellIdentifierType">
+		<annotation>
+			<documentation>The unique code or number for a specific well.</documentation>
+		</annotation>
+	</element>
+	<element name="WellInformation">
+		<annotation>
+			<documentation>Structure which contains information about a well.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="pidx:WellIdentifier" maxOccurs="unbounded"/>
+				<element ref="pidx:WellName" minOccurs="0"/>
+				<element ref="pidx:WellType" minOccurs="0"/>
+				<element ref="pidx:WellCategory" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="WellName" type="string"/>
+	<element name="WellType" type="pidx:WellType">
+		<annotation>
+			<documentation>Identifies the classification of the well, such as refinery, pipeline, oil well, etc.</documentation>
+		</annotation>
+	</element>
+	<element name="Width" type="pidx:QuantityType">
+		<annotation>
+			<documentation>The shortest horizontal dimension of an object</documentation>
+		</annotation>
+	</element>
+	<element name="InvoiceResponseReason" type="pidx:InvoiceResponseReasonType"/>
+	<element name="ResponseReasonCode" type="pidx:ResponseReasonCodeType">
+		<annotation>
+			<documentation>Specifies the enumerated values provided in a response message.</documentation>
+		</annotation>
+	</element>
+	<element name="ResponseReasonCodeXPath" type="string">
+		<annotation>
+			<documentation>Provides for an XPath representation to refer to specific XML content to which the associated reason code applies. For example, the following XPath specifies that the source of an error as being the ReferenceNumber element: Invoice/InvoiceProperties/ReferenceInformation/ReferenceNumber</documentation>
+		</annotation>
+	</element>
+	<element name="ResponseReasonComments" type="string">
+		<annotation>
+			<documentation>Provides free text comment(s) within a response message.</documentation>
+		</annotation>
+	</element>
+	<complexType name="AdvancedShipmentNoticeLineItemsType">
+		<complexContent>
+			<extension base="pidx:LineItemsType">
+				<sequence>
+					<element ref="pidx:StorageTankIdentifier" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="AdvancedShipNoticeLineItemsType">
+		<sequence>
+			<element ref="pidx:LineItemNumber"/>
+			<element ref="pidx:EquipmentDetailsLineNumber" minOccurs="0"/>
+			<element ref="pidx:RevisionNumber" minOccurs="0"/>
+			<element ref="pidx:ProductInformation" maxOccurs="unbounded"/>
+			<element ref="pidx:ShippedQuantity"/>
+			<element ref="pidx:OrderQuantity" minOccurs="0"/>
+			<element ref="pidx:InvoiceQuantity" minOccurs="0"/>
+			<element ref="pidx:PackagingQuantity" minOccurs="0"/>
+			<element ref="pidx:CumulativeTotalQuantity" minOccurs="0"/>
+			<element ref="pidx:LineItemText" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:DocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:ShipmentIndicator" minOccurs="0"/>
+			<element ref="pidx:PartnerInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:DateTimeRange" minOccurs="0"/>
+			<element ref="pidx:ShipmentTerms" minOccurs="0"/>
+			<choice minOccurs="0">
+				<element ref="pidx:ScheduleDateTime"/>
+				<element ref="pidx:ScheduleDateTimeRange"/>
+			</choice>
+			<element ref="pidx:SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:RequestedDocument" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:Routing" minOccurs="0"/>
+			<element ref="pidx:CustomerSpecificInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:PercentActive" minOccurs="0"/>
+			<element ref="pidx:ProductSubLineItems" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:PackagingInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:Comment" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType name="CompanyInformationType">
+		<annotation>
+			<documentation>Specifies information about a company.</documentation>
+		</annotation>
+		<attribute name="CompanyCode" use="required">
+			<annotation>
+				<documentation>An alpha-numeric field, from the PIDX company code list, that is used to identify the company.</documentation>
+			</annotation>
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<pattern value="[a-zA-Z]{2,3}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="CompanyName" type="string"/>
+		<attribute name="CompanyFEIN" type="pidx:FEIN_Type">
+			<annotation>
+				<documentation>2 numerics followed by a dash, followed by 7 digits.</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+	<complexType name="CustodyPartnerType">
+		<annotation>
+			<documentation>Information about a trading partner that is participating in a custody transfer.</documentation>
+		</annotation>
+		<sequence>
+			<element ref="pidx:PartnerInformation"/>
+			<element ref="pidx:PartnerEntityIdentifier" minOccurs="0">
+				<annotation>
+					<documentation>An EPA assigned identifier for companies participating upstream of, and including, a truck rack.</documentation>
+				</annotation>
+			</element>
+			<element ref="pidx:PartnerFacilityIdentifier" minOccurs="0">
+				<annotation>
+					<documentation>An EPA assigned identifier for a group of assets owned by the entity participating upstream of, and including, a truck rack.</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="DateTimeRangeType">
+		<annotation>
+			<documentation>Type holding the structure for date/time range elements.</documentation>
+			<documentation>
+				The starting date and time of a range.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="FromDateTime" type="dateTime"/>
+			<element name="ToDateTime" type="dateTime"/>
+		</sequence>
+		<attributeGroup ref="pidx:rangeAttributes"/>
+	</complexType>
+	<complexType name="DescriptionType">
+		<annotation>
+			<documentation>Type holding the structure for description elements.</documentation>
+		</annotation>
+		<sequence>
+			<element ref="pidx:Description"/>
+			<element ref="pidx:LanguageCode" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ErrorsType">
+		<annotation>
+			<documentation xml:lang="en">A collection of errors that occurred during the processing of a message.</documentation>
+		</annotation>
+		<sequence>
+			<element name="Error" type="pidx:ErrorWarningType" maxOccurs="99"/>
+		</sequence>
+	</complexType>
+	<complexType name="ErrorWarningType">
+		<annotation>
+			<documentation xml:lang="en">Standard way to indicate that either: a) successful processing of an message, but one in which warnings are generated b) an error occurred during the processing of an OTA message</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="pidx:FreeTextType">
+				<attribute name="Type" type="string" use="required">
+					<annotation>
+						<documentation xml:lang="en">The Warning element MUST contain the Type attribute that uses a recommended set of values to indicate the warning type. The validating XSD can expect to accept values that it has NOT been explicitly coded for and process them by using Type ="Unknown".</documentation>
+					</annotation>
+				</attribute>
+				<attributeGroup ref="pidx:ErrorWarningAttributeGroup"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="FreeTextType">
+		<annotation>
+			<documentation xml:lang="en">Textual information to provide descriptions and/or additional information.</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="string">
+				<attributeGroup ref="pidx:LanguageGroup"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="InvoiceResponseReasonType">
+		<sequence>
+			<element ref="pidx:ResponseReasonCode"/>
+			<element ref="pidx:ResponseReasonCodeXPath" minOccurs="0"/>
+			<element ref="pidx:ResponseReasonComments" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="LineItemsType">
+		<sequence>
+			<element ref="pidx:LineItemNumber" minOccurs="0"/>
+			<element ref="pidx:DocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:PartnerInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:CustomerSpecificInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="pidx:Comment" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType name="MeasurementType">
+		<sequence>
+			<element ref="pidx:Measurement"/>
+			<element ref="pidx:UnitOfMeasureCode"/>
+		</sequence>
+	</complexType>
+	<complexType name="MonetaryType">
+		<annotation>
+			<documentation>Type holding the structure for monetary elements.</documentation>
+		</annotation>
+		<sequence>
+			<element ref="pidx:MonetaryAmount"/>
+			<element ref="pidx:CurrencyCode" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="OrderChangeCancelLineItemsType">
+		<complexContent>
+			<extension base="pidx:LineItemsType">
+				<sequence>
+					<element ref="pidx:PurchaseOrderReferenceInformation" minOccurs="0"/>
+					<element ref="pidx:LineItemRequestedAction"/>
+					<element ref="pidx:AccompanyingSampleCode" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="OrderResponseLineItemsType">
+		<complexContent>
+			<extension base="pidx:OrderLineItemsType">
+				<sequence>
+					<element ref="pidx:StatusCode"/>
+					<element ref="pidx:ResponseReason"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="OrderStatusLineItemsRequestType">
+		<complexContent>
+			<extension base="pidx:LineItemsType"/>
+		</complexContent>
+	</complexType>
+	<complexType name="OrderStatusResponseLineItemsType">
+		<complexContent>
+			<extension base="pidx:OrderResponseLineItemsType">
+				<sequence>
+					<element ref="pidx:ProprietaryShipmentTrackingIdentifier" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="OrderLineItemsType">
+		<complexContent>
+			<extension base="pidx:LineItemsType">
+				<sequence>
+					<element ref="pidx:RevisionNumber" minOccurs="0"/>
+					<element ref="pidx:ProductInformation" maxOccurs="unbounded"/>
+					<element ref="pidx:OrderQuantity"/>
+					<element ref="pidx:PackagingQuantity" minOccurs="0"/>
+					<element ref="pidx:LineItemPurposeCode" minOccurs="0"/>
+					<element ref="pidx:EngineeringChangeOrderIdentifier" minOccurs="0"/>
+					<element ref="pidx:BatchNumber" minOccurs="0"/>
+					<element ref="pidx:CountryOfOrigin" minOccurs="0"/>
+					<element ref="pidx:CountryOfFinalDestination" minOccurs="0"/>
+					<element ref="pidx:DeliveryTolerances" minOccurs="0"/>
+					<element ref="pidx:ShipmentTerms" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element ref="pidx:ScheduleDateTime"/>
+						<element ref="pidx:ScheduleDateTimeRange"/>
+					</choice>
+					<element ref="pidx:TransportInformation" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="pidx:RequestedDocument" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="pidx:Routing" minOccurs="0"/>
+					<element ref="pidx:SpecialServicesRequest" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="pidx:PackListRequirements" minOccurs="0"/>
+					<element ref="pidx:QuoteIdentifier" minOccurs="0"/>
+					<element ref="pidx:Label" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="pidx:ImportLicenseNeededFlag" minOccurs="0"/>
+					<element ref="pidx:ImportLicenseAvailableFlag" minOccurs="0"/>
+					<element ref="pidx:AccompanyingSampleCode" minOccurs="0"/>
+					<element ref="pidx:JobLocationClassCode" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="PartnerConfirmationStatusType">
+		<annotation>
+			<documentation>Structure which contains information about the Partner's action in the transaction.</documentation>
+		</annotation>
+		<sequence>
+			<element ref="pidx:PartnerInformation"/>
+			<element ref="pidx:ConfirmationDateTime" minOccurs="0"/>
+			<element ref="pidx:ConfirmationStatusCode"/>
+		</sequence>
+	</complexType>
+	<complexType name="PartnerEventAction">
+		<annotation>
+			<documentation>Structure which contains information about the Partner's action in the transaction, such as created by.</documentation>
+		</annotation>
+		<sequence>
+			<element ref="pidx:PartnerInformation"/>
+			<element ref="pidx:EventDateTime"/>
+		</sequence>
+	</complexType>
+	<complexType name="PipelineEventInformationType">
+		<annotation>
+			<documentation>Structure which contains information about the Pipeline Event in the transaction.</documentation>
+		</annotation>
+		<sequence>
+			<element ref="pidx:PipelineEvent"/>
+			<element ref="pidx:PipelineEventVolumeAffect"/>
+			<element ref="pidx:PipelineEventStatus" minOccurs="0"/>
+			<element ref="pidx:PipelineEventDescription" minOccurs="0"/>
+			<element ref="pidx:PipelineCustodyEvent" minOccurs="0"/>
+			<element ref="pidx:AllowPartnerChange" minOccurs="0"/>
+			<element ref="pidx:AffectShipperInventory" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ProductCharacteristicsType">
+		<attribute name="Additized" type="pidx:AdditizedCodeType">
+			<annotation>
+				<documentation>Indicates whether the product is additized and if so, with what.  Additives are proprietary if it is the proprietary additive of the final seller of the product.</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="CetaneOctane" type="decimal">
+			<annotation>
+				<documentation>The numeric value of the cetane or octane.  For example, 87.0 would be a typical octane value for gasoline; 42.0 would be a typical cetane value for #2 diesel.</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="DyesFlag">
+			<annotation>
+				<documentation>A single alpha-numeric character indicating if the product contains a dye.  Acceptable values are:  Y=Yes, N=No.</documentation>
+			</annotation>
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<pattern value="[a-zA-Z]{1}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="FungibleSegregated" type="pidx:FungibleSegregatedCodeType">
+			<annotation>
+				<documentation>Indicates whether the product is fungible or segregated.</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="OXY" type="decimal">
+			<annotation>
+				<documentation>Regulatory Oxy percentage.  This is a percentage value (e.g. 2.7 means 2.7%).</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="OxygenatePercent" type="decimal">
+			<annotation>
+				<documentation>Volume percent of oxygenate.  This is a percentage value (e.g. 10.0 means 10%).</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="RFGFlag" type="boolean">
+			<annotation>
+				<documentation>Indicates whether the product type is reformulated gasoline.</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="RVP" type="decimal">
+			<annotation>
+				<documentation>Reid Vapor Pressure.  This is a percentage value (e.g. 8.5 means 8.5%).</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="SulfurContent" type="decimal">
+			<annotation>
+				<documentation>A numeric indication of the sulphur content of the product.  This is a percentage value (e.g. 1.0 means 1%).  (If the sulphur content is .06% or higher, the product is considered to be a high sulphur product.  If the sulphur content is .05% or lower, the product is considered to be a low sulphur product.)</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+	<complexType name="ProductType">
+		<sequence>
+			<element ref="pidx:ProductDescription" minOccurs="0"/>
+			<element ref="pidx:GrossQuantity"/>
+			<element ref="pidx:Temperature" minOccurs="0"/>
+			<element ref="pidx:Gravity" minOccurs="0"/>
+			<element ref="pidx:NetQuantity"/>
+			<element ref="pidx:ProductCharacteristics"/>
+		</sequence>
+		<attribute name="ProductCode" type="string" use="required">
+			<annotation>
+				<documentation>A code which identifies the product loaded.  Codes used are the Oil Industry Common Product Codes.  The codes are maintained and available from the PIDX Downstream E-Business Subcommittee. If there was no blending, the Component and Finished Product Codes should be the same code.</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="ProductName" type="string"/>
+	</complexType>
+	<complexType name="QuantityType">
+		<annotation>
+			<documentation>Type holding the structure for quantity elements.</documentation>
+		</annotation>
+		<sequence>
+			<element ref="pidx:Quantity"/>
+			<element ref="pidx:UnitOfMeasureCode"/>
+		</sequence>
+	</complexType>
+	<complexType name="ReceiptLineItemsType">
+		<complexContent>
+			<extension base="pidx:LineItemsType">
+				<sequence>
+					<element ref="pidx:StorageTankIdentifier" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="SuccessType">
+		<annotation>
+			<documentation xml:lang="en">Standard way to indicate successful processing of an OTA message. Returning an empty element of this type indicates success.</documentation>
+		</annotation>
+	</complexType>
+	<complexType name="TaxType">
+		<sequence>
+			<element ref="pidx:TaxTypeCode"/>
+			<element ref="pidx:MixedRateIndicator" minOccurs="0"/>
+			<element ref="pidx:TaxIdentifierNumber" minOccurs="0"/>
+			<element ref="pidx:TaxExemptCode" minOccurs="0"/>
+			<element ref="pidx:TaxLocation" minOccurs="0"/>
+			<element ref="pidx:TaxRate" minOccurs="0"/>
+			<element ref="pidx:TaxBasisAmount" minOccurs="0"/>
+			<element ref="pidx:TaxAmount" minOccurs="0"/>
+			<element ref="pidx:TaxReference" minOccurs="0"/>
+			<element ref="pidx:DeferredAmount" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="TerminalInformationType">
+		<sequence>
+			<element ref="pidx:AddressInformation" minOccurs="0"/>
+		</sequence>
+		<attribute name="EPAEntityID">
+			<annotation>
+				<documentation>The four-character EPA-assigned ID for the entity (I believe this will be assigned to the operating company at the terminal)</documentation>
+			</annotation>
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<pattern value="[0-9a-zA-Z]{4}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="EPAFacilityID">
+			<annotation>
+				<documentation>The five-character EPA-assigned ID for the facility.  Filled with leading zeroes if applicable.</documentation>
+			</annotation>
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<pattern value="[0-9a-zA-Z]{5}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="TerminalControlNumber" use="required">
+			<annotation>
+				<documentation>An alpha-numeric field identifying the Internal Revenue Service’s Terminal Control Number. (Use “NON-IRS” if not applicable such as for an asphalt terminal or refinery)</documentation>
+			</annotation>
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<pattern value="[a-zA-Z0-9]{9}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="TerminalName">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<pattern value="[0-9a-zA-Z]{1,30}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="TerminalSPLC" type="pidx:SPLC_Type" use="required">
+			<annotation>
+				<documentation>A numeric field used to identify the physical location of the terminal from which the product was withdrawn.</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="TerminalTimeZone" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<pattern value="[0-9a-zA-Z]{2,3}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<complexType name="WarningsType">
+		<sequence>
+			<element name="Warning" type="pidx:ErrorWarningType" maxOccurs="99"/>
+		</sequence>
+	</complexType>
+	<complexType name="WellIdentifierType">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="wellIdentifierIndicator">
+					<simpleType>
+						<restriction base="string">
+							<enumeration value="APINumber"/>
+							<enumeration value="CustomerWellNumber"/>
+							<enumeration value="UWINumber"/>
+							<enumeration value="Other"/>
+						</restriction>
+					</simpleType>
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="AlphaLength1to2">
+		<annotation>
+			<documentation xml:lang="en">Used for an Alpha String, length 2 (for letter codes)</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="[a-zA-Z]{1,2}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="FEIN_Type">
+		<annotation>
+			<documentation> </documentation>
+			<documentation/>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<pattern value="[0-9]{2}-[0-9]{7}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SPLC_Type">
+		<annotation>
+			<documentation>SPLC stands for Standard Point Location Code.</documentation>
+		</annotation>
+		<restriction base="NMTOKEN">
+			<pattern value="[0-9]{9}"/>
+		</restriction>
+	</simpleType>
+	<attributeGroup name="ErrorWarningAttributeGroup">
+		<annotation>
+			<documentation xml:lang="en">Used to identify an application error by either text, code, or by an online description and also to give the status, tag, and/or identification of the record that may have caused the error.</documentation>
+		</annotation>
+		<attribute name="ShortText" type="string" use="optional"/>
+		<attribute name="Code" type="string" use="optional">
+			<annotation>
+				<documentation xml:lang="en">If present, this refers to a table of coded values exchanged between applications to identify errors or warnings.</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="DocURL" type="anyURI" use="optional">
+			<annotation>
+				<documentation xml:lang="en">If present, this URL refers to an online description of the error that occurred.</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="Status" use="optional">
+			<annotation>
+				<documentation xml:lang="en">If present, recommended values are: NotProcessed, Incomplete, Complete, Unknown. However, the data type is designated as string data, recognizing that trading partners may identify additional status conditions not included in the enumeration.</documentation>
+			</annotation>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="InventoryKickouts">
+						<annotation>
+							<documentation>Outstanding or open issues that could affect the beginning or ending  inventory balance(s).</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="TransactionKickouts">
+						<annotation>
+							<documentation>Outstanding or open issues that could affect the beginning or ending transaction balance(s).</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="Tag" type="string" use="optional">
+			<annotation>
+				<documentation xml:lang="en">If present, this attribute may identify an unknown or misspelled tag that caused an error in processing. It is recommended that the Tag attribute use XPath notation to identify the location of a tag in the event that more than one tag of the same name is present in the document. Alternatively, the tag name alone can be used to identify missing data [Type=ReqFieldMissing].</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="RecordID" type="string" use="optional">
+			<annotation>
+				<documentation xml:lang="en">If present, this attribute allows for batch processing and the identification of the record that failed amongst a group of records.</documentation>
+			</annotation>
+		</attribute>
+	</attributeGroup>
+	<attributeGroup name="LanguageGroup">
+		<annotation>
+			<documentation xml:lang="en">Identifies language.</documentation>
+		</annotation>
+		<attribute name="Language" type="language" use="optional">
+			<annotation>
+				<documentation xml:lang="en">Language identification.</documentation>
+			</annotation>
+		</attribute>
+	</attributeGroup>
+	<attributeGroup name="rangeAttributes">
+		<attribute name="rangeType" type="pidx:RangeType"/>
+		<attribute name="definitionOfOther" type="string"/>
+	</attributeGroup>
+	<attribute name="currencyOrder" type="pidx:CurrencyOrderType">
+		<annotation>
+			<documentation>Identifies if a currency is primary, secondary, or tertiary.</documentation>
+		</annotation>
+	</attribute>
+	<attribute name="documentIdentifier" type="string"/>
+	<attribute name="multiplier" type="string">
+		<annotation>
+			<documentation>Identifies a percentage used to calculate an adjustment amount.
+			</documentation>
+		</annotation>
+	</attribute>
+	<attribute name="partnerRole" type="pidx:PartnerRoleType">
+		<annotation>
+			<documentation>The role a particular partner plays in this transaction.</documentation>
+		</annotation>
+	</attribute>
+	<attribute name="phoneType" type="pidx:PhoneType">
+		<annotation>
+			<documentation>Identifies what kind of phone number is being given.</documentation>
+		</annotation>
+	</attribute>
+	<attribute name="rangeType" type="pidx:RangeType">
+		<annotation>
+			<documentation>Indicates what kind of date time range is being given.</documentation>
+		</annotation>
+	</attribute>
+	<attribute name="transactionPurposeIndicator" type="pidx:TransactionPurposeIndicatorType"/>
+	<attribute name="version" type="decimal" default="1.0">
+		<annotation>
+			<documentation>Indicates the version of the schema being used.</documentation>
+		</annotation>
+	</attribute>
+</schema>

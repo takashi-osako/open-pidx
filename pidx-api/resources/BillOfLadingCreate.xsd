@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:pidx="http://www.pidx.org/schemas/v1.51" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.pidx.org/schemas/v1.51" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.51">
+    <annotation>
+        <documentation>
+                    Schema Name:        BillOfLadingCreate
+                    Schema Purpose:
+                    Document ID:        01-453-10-25-2007 
+                    
+                    © PIDX, Inc. 2012
+                    Use of this copyrighted material is subject to the PIDX End User License Agreement available at
+                    www.pidx.org/license. Each user agrees to such End User License Agreement by making any use
+                    of the copyrighted material.
+                    
+                    This document was prepared and is maintained in accordance with the PIDX Procedures for Standards
+                    Development, a copy of which is available at www.pidx.org/procedures, and the PIDX Antitrust Guidelines, 
+                    a copy of which is available at www.pidx.org/antitrust.
+                    
+                    Schema Version Number:  1.51 
+                    Version Date:               2012-01-11
+                    Change Management Log:
+                    Version     Person                  Date            Description
+                    Sep2007 Original                    2007-09-15      From Sep2007 release
+                    1.51        PIDX BMWG               2012-01-11      Transfer to PIDX, Inc.
+        </documentation>
+    </annotation>
+    <include schemaLocation="PIDXLib.xsd"/>
+    <element name="BillOfLadingCreate" type="pidx:BillOfLadingType"/>
+    <element name="BillOfLadingDetails" type="pidx:BillOfLadingDetailsType"/>
+    <element name="BillOfLadingHeader" type="pidx:BillOfLadingHeaderType"/>
+    <element name="BillOfLadingSummary" type="pidx:BillOfLadingSummaryType"/>
+    <element name="BillToInformation" type="pidx:BillToInformationType">
+        <annotation>
+            <documentation>Information pertaining to the person/company purchasing the product.</documentation>
+        </annotation>
+    </element>
+    <element name="CarrierInformation" type="pidx:CarrierInformationType">
+        <annotation>
+            <documentation>Specifies information pertaining to the carrier (a.k.a. hauler) of the product.</documentation>
+        </annotation>
+    </element>
+    <element name="ComponentProduct" type="pidx:ProductType"/>
+    <element name="DriverInformation" type="pidx:DriverInformationType"/>
+    <element name="ExchangeOrThroughputPartnerInformation" type="pidx:CompanyInformationType">
+        <annotation>
+            <documentation>When populated, this content model contains the product owner (when different from supplier).</documentation>
+            <documentation>In exchange accounting scenarios, when the PDXB records are being SENT through a VAN, the 2 digit company code is the 
+                    company that is the receiver of the data;   when PDXB records are being RECEIVED, the 2 digit company code is the 
+                    company that sent the data.</documentation>
+        </annotation>
+    </element>
+    <element name="FinalShipper" type="pidx:CompanyInformationType"/>
+    <element name="FinishedProduct" type="pidx:FinishedProductType"/>
+    <element name="SecondaryDriverID" type="pidx:SecondaryDriverIDType"/>
+    <element name="ShipperInformation" type="string">
+        <annotation>
+            <documentation>Freeform data that may be used for any information that the terminal operator would like to send.</documentation>
+        </annotation>
+    </element>
+    <element name="ShipToInformation" type="pidx:ShipToInformationType">
+        <annotation>
+            <documentation>Information about the location to which products are shipped.</documentation>
+        </annotation>
+    </element>
+    <element name="SupplierInformation" type="pidx:CompanyInformationType">
+        <annotation>
+            <documentation>Seller of the product to the customer.</documentation>
+        </annotation>
+    </element>
+    <element name="ThirdParty" type="pidx:CompanyInformationType">
+        <annotation>
+            <documentation>A 2 digit PIDX Company Code.</documentation>
+        </annotation>
+    </element>
+    <element name="TransactionType" type="pidx:TransactionTypeCodeType">
+        <annotation>
+            <documentation>Specifies the type of BoL transaction associated with typical BoL trading partners. Normal types include Invoice, Billing, etc. </documentation>
+        </annotation>
+    </element>
+    <element name="UnitOfMeasurement" type="string">
+        <annotation>
+            <documentation>Refers to PDXB v3 data field: MeasurementType</documentation>
+        </annotation>
+    </element>
+    <element name="VehicleInformation">
+        <annotation>
+            <documentation>Information about a vehicle involved in the load.</documentation>
+        </annotation>
+        <complexType>
+            <complexContent>
+                <extension base="pidx:VehicleInformationType"/>
+            </complexContent>
+        </complexType>
+    </element>
+    <complexType name="BillOfLadingDetailsType">
+        <sequence>
+            <element ref="pidx:FinishedProduct" maxOccurs="20"/>
+        </sequence>
+    </complexType>
+    <complexType name="BillOfLadingHeaderType">
+        <annotation>
+            <documentation/>
+        </annotation>
+        <sequence>
+            <element ref="pidx:PurchaseOrderInformation" minOccurs="0"/>
+            <element ref="pidx:SupplierInformation"/>
+            <element ref="pidx:ExchangeOrThroughputPartnerInformation" minOccurs="0"/>
+            <element ref="pidx:ThirdParty" minOccurs="0" maxOccurs="6"/>
+            <element ref="pidx:FinalShipper" minOccurs="0"/>
+            <element ref="pidx:TerminalInformation"/>
+            <element ref="pidx:CarrierInformation"/>
+            <element ref="pidx:BillToInformation"/>
+            <element ref="pidx:ShipToInformation"/>
+        </sequence>
+        <attribute name="AuthorizationCode">
+            <annotation>
+                <documentation>For real-time (PDXR) type authorizations, this is the number assigned/returned from the load authorizing application.</documentation>
+            </annotation>
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9]{8}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="ConsigneeNumber" type="string" use="required">
+            <annotation>
+                <documentation>An alpha-numeric field which identifies the consignee as it appears on the BOL. 
+                        This field may include the following two data fields: 'Bill To ID' and (optionally) 'Ship To ID'.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="DispatchOrderNumber">
+            <annotation>
+                <documentation>A system generated load verification number</documentation>
+            </annotation>
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9a-zA-Z]{50}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="EndLoadDate" type="date">
+            <annotation>
+                <documentation>The date when the driver stops the load/transaction.  Typically, this is when the driver is finished loading at the truck rack load lane and “cards out.”</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="EndLoadTime" type="time">
+            <annotation>
+                <documentation>The time when the driver stops the load/transaction.  Typically, this is when the driver is finished loading at the truck rack load lane and “cards out.”</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="EntryDate" type="date">
+            <annotation>
+                <documentation>The date when the driver entered the terminal.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="EntryTime" type="time">
+            <annotation>
+                <documentation>The time when the driver entered the terminal.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="ExitDate" type="date">
+            <annotation>
+                <documentation>The date when the driver finished (either when carded out and did the BOL print, or when carded out to exit the terminal).</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="ExitTime" type="time">
+            <annotation>
+                <documentation>The time when the driver finished (either when carded out and did the BOL print, or when carded out to exit the terminal).</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="LoadSpot">
+            <annotation>
+                <documentation>Identifies which lane or loading area the driver loaded the product.</documentation>
+            </annotation>
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9a-zA-Z]{1,30}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="StartLoadDate" type="date" use="required">
+            <annotation>
+                <documentation>The date when the driver started the load/transaction.  Typically, this is when the driver “cards in” at the truck rack load lane to begin loading.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="StartLoadTime" type="time" use="required">
+            <annotation>
+                <documentation>The time when the driver started the load/transaction.  Typically, this is when the driver “cards in” at the truck rack load lane to begin loading.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="TransactionType" type="pidx:TransactionTypeCodeType" use="required"/>
+        <attribute name="BillOfLadingNumber" use="required">
+            <annotation>
+                <documentation>An alpha-numeric field, which contains the significant digits of the bill of lading number.  Right justification and padding with leading zeros is not required.</documentation>
+            </annotation>
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9,a-zA-Z]{1,16}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+    <complexType name="BillOfLadingSummaryType">
+        <attribute name="FinishedProductCount" type="integer" use="required">
+            <annotation>
+                <documentation>Specifies the total number of finished products.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="GrossQuantityTotal" type="decimal" use="required">
+            <annotation>
+                <documentation>The sum of the GrossQuantity element values directly beneath (one level below) the FinishedProduct elements – regardless of the UOM.  This is used as a checksum for the document.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="NetQuantityTotal" type="decimal" use="required">
+            <annotation>
+                <documentation>The sum of the NetQuantity element values directly beneath (one level below) the FinishedProduct elements – regardless of the UOM.  This is used as a checksum for the document.</documentation>
+            </annotation>
+        </attribute>
+    </complexType>
+    <complexType name="BillOfLadingType">
+        <sequence>
+            <element ref="pidx:BillOfLadingHeader"/>
+            <element ref="pidx:BillOfLadingDetails"/>
+            <element ref="pidx:BillOfLadingSummary"/>
+        </sequence>
+        <attribute ref="pidx:documentIdentifier" use="required"/>
+        <attribute ref="pidx:transactionPurposeIndicator" use="required"/>
+        <attribute ref="pidx:version"/>
+    </complexType>
+    <complexType name="BillToInformationType">
+        <sequence>
+            <element ref="pidx:AddressInformation" minOccurs="0"/>
+            <element ref="pidx:ShipperInformation" minOccurs="0"/>
+        </sequence>
+        <attribute name="BillToFEIN" type="pidx:FEIN_Type">
+            <annotation>
+                <documentation>2 numerics followed by a dash, followed by 7 digits.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="BillToID">
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9,a-zA-Z]{1,14}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="BillToName">
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9,a-zA-Z]{1,30}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="ContractID">
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9a-zA-Z]{1,10}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="ContractName">
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9a-zA-Z]{1,30}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+    <complexType name="CarrierInformationType">
+        <sequence>
+            <element ref="pidx:AddressInformation" minOccurs="0"/>
+            <element ref="pidx:DriverInformation" minOccurs="0"/>
+            <element ref="pidx:VehicleInformation" minOccurs="0" maxOccurs="4"/>
+        </sequence>
+        <attribute name="CarrierFEIN" type="pidx:FEIN_Type" use="required">
+            <annotation>
+                <documentation>2 numerics followed by a dash, followed by 7 digits.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="CarrierID">
+            <annotation>
+                <documentation>A number or code used by the terminal automation system to uniquely identify the carrier of the product.</documentation>
+            </annotation>
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9a-zA-Z]{1,20}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="CarrierName">
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9,a-zA-Z]{1,30}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="CarrierSCAC" use="required">
+            <annotation>
+                <documentation>SCAC stands for Standard Carrier Alpha Code.</documentation>
+            </annotation>
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9,a-zA-Z]{1,4}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="SplitLoading" type="boolean">
+            <annotation>
+                <documentation>Specifies whether a truck is loaded at multiple lanes at the terminal truck rack.</documentation>
+            </annotation>
+        </attribute>
+    </complexType>
+    <complexType name="DriverInformationType">
+        <sequence>
+            <element ref="pidx:SecondaryDriverID" minOccurs="0"/>
+        </sequence>
+        <attribute name="DriverID" use="required">
+            <annotation>
+                <documentation>Data that belongs to the Terminal Automation System.</documentation>
+            </annotation>
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9a-zA-Z]{1,20}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="DriverName">
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9a-zA-Z]{1,30}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="Signature" type="string"/>
+    </complexType>
+    <complexType name="FinishedProductType">
+        <complexContent>
+            <extension base="pidx:ProductType">
+                <sequence>
+                    <element ref="pidx:ComponentProduct" maxOccurs="8"/>
+                    <element name="CompartmentInfo" minOccurs="0">
+                        <complexType>
+                            <attribute name="VehicleNumber" use="required">
+                                <annotation>
+                                    <documentation>An identifier used for the vehicle/transport involved. This should reference a VehicleNumber from CarrierInformation.VehicleInformation in the BillOfLadingHeader.</documentation>
+                                </annotation>
+                                <simpleType>
+                                    <restriction base="NMTOKEN">
+                                        <pattern value="[0-9,a-zA-Z]{1,10}"/>
+                                    </restriction>
+                                </simpleType>
+                            </attribute>
+                            <attribute name="CompartmentId" use="required">
+                                <annotation>
+                                    <documentation>Identifier the compartment within the vehicle/transport involved.</documentation>
+                                </annotation>
+                                <simpleType>
+                                    <restriction base="NMTOKEN">
+                                        <pattern value="[0-9,a-zA-Z]{1,10}"/>
+                                    </restriction>
+                                </simpleType>
+                            </attribute>
+                        </complexType>
+                    </element>
+                </sequence>
+                <attribute name="BlendOrAlterationIndicator" type="pidx:BlendOrAlterationCodeType" use="required">
+                    <annotation>
+                        <documentation>Indicates that there has been some modification to the product.</documentation>
+                    </annotation>
+                </attribute>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="SecondaryDriverIDType">
+        <attribute name="IdentType" type="string" use="optional"/>
+        <attribute name="Issuer" type="string" use="optional"/>
+    </complexType>
+    <complexType name="ShipToInformationType">
+        <sequence>
+            <element ref="pidx:AddressInformation" minOccurs="0"/>
+        </sequence>
+        <attribute name="ShipToCityCode" type="string">
+            <annotation>
+                <documentation/>
+            </annotation>
+        </attribute>
+        <attribute name="ShipToCountyCode" type="string">
+            <annotation>
+                <documentation>Refers to PDXB v3: DestinationCountyCode</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="ShipToID" type="string">
+            <annotation>
+                <documentation/>
+            </annotation>
+        </attribute>
+        <attribute name="ShipToName" type="string">
+            <annotation>
+                <documentation>Specifies the name of a receiver of a product. In some cases this may be the marketer. In other cases, this may be the end location.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="ShipToStateCode" use="required">
+            <annotation>
+                <documentation>Specifies the state to which goods are shipped.</documentation>
+            </annotation>
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9a-zA-Z]{2}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+    <complexType name="VehicleInformationType">
+        <attribute name="VehicleType" type="pidx:VehicleTypeCodeType"/>
+        <attribute name="VehicleNumber" use="required">
+            <annotation>
+                <documentation>An identifier used for the vehicle/transport involved.</documentation>
+            </annotation>
+            <simpleType>
+                <restriction base="NMTOKEN">
+                    <pattern value="[0-9,a-zA-Z]{1,10}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+</schema>

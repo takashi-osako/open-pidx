@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.pidx.org/schemas/v1.51" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:pidx="http://www.pidx.org/schemas/v1.51" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.51">
+	<annotation>
+		<documentation>
+					Schema Name:		OrderStatusReponse
+					Schema Purpose:
+					Document ID: 		01-468-10-25-2007 
+					
+					© PIDX, Inc. 2012
+					Use of this copyrighted material is subject to the PIDX End User License Agreement available at
+					www.pidx.org/license. Each user agrees to such End User License Agreement by making any use
+					of the copyrighted material.
+					
+					This document was prepared and is maintained in accordance with the PIDX Procedures for Standards
+					Development, a copy of which is available at www.pidx.org/procedures, and the PIDX Antitrust Guidelines, 
+					a copy of which is available at www.pidx.org/antitrust.
+					
+					Schema Version Number:	1.51 
+					Version Date: 				2012-01-11
+					Change Management Log:
+					Version		Person					Date			Description
+					Sep2007	Original					2007-09-15		From Sep2007 release
+					1.51		PIDX BMWG				2012-01-11		Transfer to PIDX, Inc.
+		</documentation>
+	</annotation>
+	<include schemaLocation="PIDXLib.xsd"/>
+	<element name="OrderStatusResponse">
+		<complexType>
+			<sequence>
+				<element ref="pidx:OrderStatusResponseProperties"/>
+				<element ref="pidx:OrderStatusResponseDetails" minOccurs="0"/>
+				<element ref="pidx:OrderStatusResponseTotals" minOccurs="0"/>
+			</sequence>
+			<attribute ref="pidx:version" use="optional"/>
+		</complexType>
+	</element>
+	<element name="OrderStatusResponseDetails">
+		<complexType>
+			<sequence>
+				<element ref="pidx:OrderStatusResponseLineItems" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="OrderStatusResponseProperties">
+		<complexType>
+			<sequence>
+				<element ref="pidx:OrderNumber"/>
+				<element ref="pidx:OrderDate"/>
+				<element ref="pidx:OrderType" minOccurs="0"/>
+				<element ref="pidx:PurchaseOrderReferenceInformation" minOccurs="0"/>
+				<element ref="pidx:StatusCode" minOccurs="0"/>
+				<element ref="pidx:ResponseReason" minOccurs="0"/>
+				<element ref="pidx:DateTimeRange" minOccurs="0"/>
+				<element ref="pidx:OrderCode" minOccurs="0"/>
+				<element ref="pidx:OrderID" minOccurs="0"/>
+				<element ref="pidx:SystemAccountCode" minOccurs="0"/>
+				<element ref="pidx:RevisionNumber" minOccurs="0"/>
+				<element ref="pidx:ReleaseNumber" minOccurs="0"/>
+				<element ref="pidx:LanguageCode" minOccurs="0"/>
+				<element ref="pidx:CurrencyCode" minOccurs="0" maxOccurs="3"/>
+				<element ref="pidx:CurrencyRates" minOccurs="0"/>
+				<element ref="pidx:PartnerInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:DocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:SpecialInvoicePreference" minOccurs="0"/>
+				<element ref="pidx:PaymentTerms" minOccurs="0"/>
+				<element ref="pidx:LetterOfCreditInformation" minOccurs="0"/>
+				<element ref="pidx:ShipmentTerms" minOccurs="0"/>
+				<element ref="pidx:SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:JobLocationClassCode" minOccurs="0"/>
+				<element ref="pidx:Routing" minOccurs="0"/>
+				<element ref="pidx:CustomerSpecificInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:ShipWithPurchaseOrder" minOccurs="0"/>
+				<element ref="pidx:TransportInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:CountryOfOrigin" minOccurs="0"/>
+				<element ref="pidx:CountryOfFinalDestination" minOccurs="0"/>
+				<element ref="pidx:DeliveryTolerances" minOccurs="0"/>
+				<choice minOccurs="0">
+					<element ref="pidx:ScheduleDateTime"/>
+					<element ref="pidx:ScheduleDateTimeRange"/>
+				</choice>
+				<element ref="pidx:Comment" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:ProprietaryShipmentTrackingIdentifier" minOccurs="0"/>
+				<element ref="pidx:ShipDate" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="OrderStatusResponseTotals">
+		<complexType>
+			<sequence>
+				<element ref="pidx:TotalLineItems" minOccurs="0"/>
+				<element ref="pidx:GrossTotalAmount" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

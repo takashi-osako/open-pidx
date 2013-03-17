@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.pidx.org/schemas/v1.51" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:pidx="http://www.pidx.org/schemas/v1.51" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.51">
+	<annotation>
+		<documentation>
+					Schema Name:		PipelineNominationResponse
+					Schema Purpose:
+					Document ID: 		01-473-10-25-2007 
+					
+					© PIDX, Inc. 2012
+					Use of this copyrighted material is subject to the PIDX End User License Agreement available at
+					www.pidx.org/license. Each user agrees to such End User License Agreement by making any use
+					of the copyrighted material.
+					
+					This document was prepared and is maintained in accordance with the PIDX Procedures for Standards
+					Development, a copy of which is available at www.pidx.org/procedures, and the PIDX Antitrust Guidelines, 
+					a copy of which is available at www.pidx.org/antitrust.
+					
+					Schema Version Number:	1.51 
+					Version Date: 				2012-01-11
+					Change Management Log:
+					Version		Person					Date			Description
+					Sep2007	Original					2007-09-15		From Sep2007 release
+					1.51		PIDX BMWG				2012-01-11		Transfer to PIDX, Inc.
+		</documentation>
+	</annotation>
+	<include schemaLocation="PIDXLib.xsd"/>
+	<element name="PipelineNominationResponse">
+		<complexType>
+			<sequence>
+				<element ref="pidx:PipelineNominationResponseProperties"/>
+				<element ref="pidx:PipelineNominationResponseDetails"/>
+				<element ref="pidx:PipelineNominationResponseSummary"/>
+			</sequence>
+			<attribute ref="pidx:documentIdentifier" use="required"/>
+			<attribute ref="pidx:transactionPurposeIndicator" use="required"/>
+			<attribute ref="pidx:version" use="optional"/>
+		</complexType>
+	</element>
+	<element name="PipelineNominationResponseDetails">
+		<complexType>
+			<sequence>
+				<element ref="pidx:PipelineNominationResponseLineItem" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PipelineNominationResponseLineItem">
+		<complexType>
+			<sequence>
+				<element ref="pidx:LineItemNumber"/>
+				<element ref="pidx:LineStatusCode"/>
+				<element ref="pidx:LineResponseReasonCode"/>
+				<element ref="pidx:LineItemInformation" minOccurs="0"/>
+				<element ref="pidx:LineItemNominationQuantity"/>
+				<element ref="pidx:PartnerInformation" maxOccurs="unbounded"/>
+				<element ref="pidx:PartnerConfirmationStatus" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:ScheduleStartDateTime" minOccurs="0"/>
+				<element ref="pidx:ScheduleRequestDateTime" minOccurs="0"/>
+				<element ref="pidx:PipelineEventInformation" minOccurs="0"/>
+				<element ref="pidx:CommodityCode" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:PurchaseOrderLineItemNumber" minOccurs="0"/>
+				<element ref="pidx:PurchaseOrderInformation" minOccurs="0"/>
+				<element ref="pidx:CustodyLocationInformation" minOccurs="0"/>
+				<element ref="pidx:SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:PartnerDefinedMeasure" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:Attachment" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:Comment" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PipelineNominationResponseProperties">
+		<complexType>
+			<sequence>
+				<element ref="pidx:PipelineNominationResponseNumber"/>
+				<element ref="pidx:PipelineNominationResponseDateTime"/>
+				<element ref="pidx:NominationStatusCode"/>
+				<element ref="pidx:PipelineNominationResponseReasonCode"/>
+				<element ref="pidx:CreatedByPartner" minOccurs="0"/>
+				<element ref="pidx:ChangedByPartner" minOccurs="0"/>
+				<element ref="pidx:PartnerInformation" maxOccurs="unbounded"/>
+				<element ref="pidx:PipelineNominationVersionNumber" minOccurs="0"/>
+				<element ref="pidx:ProductInformation" minOccurs="0"/>
+				<element ref="pidx:PipelineCycle" minOccurs="0"/>
+				<element ref="pidx:PipelineCycleYear" minOccurs="0"/>
+				<element ref="pidx:PipelineSequence" minOccurs="0"/>
+				<element ref="pidx:PipelineSCD" minOccurs="0"/>
+				<element ref="pidx:CreatedByPartner" minOccurs="0"/>
+				<element ref="pidx:ChangedByPartner" minOccurs="0"/>
+				<element ref="pidx:PurchaseOrderInformation" minOccurs="0"/>
+				<element ref="pidx:PurchaseOrderLineItemNumber" minOccurs="0"/>
+				<element ref="pidx:LanguageCode" minOccurs="0"/>
+				<element ref="pidx:SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:Attachment" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="pidx:Comment" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PipelineNominationResponseSummary">
+		<complexType>
+			<sequence>
+				<element ref="pidx:TotalLineItems"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
