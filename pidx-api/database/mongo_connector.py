@@ -16,3 +16,6 @@ class MongoConnector():
 
     def insert(self,data):
         self.collection.insert(data)
+
+    def find(self):
+        return self.collection.find()

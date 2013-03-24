@@ -12,4 +12,5 @@ print(json.dumps(myjson))
 
 
 recept = MongoConnector('Recept')
-recept.insert(myjson)
+# recept.insert(myjson)
+datas = recept.find()
