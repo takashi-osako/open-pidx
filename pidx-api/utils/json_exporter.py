@@ -7,9 +7,9 @@ from entity.Receipt import parse
 
 def xml_to_json(xml_file):
     obj = parse(xml_file)
-    return export(obj, "data")
+    return export(xml_obj=obj)
 
-def export(xml_obj, parent_element_name):
+def export(xml_obj=None, parent_element_name=None):
     xml_dict = {}
     if xml_obj is None:
         return None
@@ -34,7 +34,9 @@ def export(xml_obj, parent_element_name):
                 new_dict = {current_element_name: obj.strftime("%Y-%m-%d %H:%M:%S")}
                 xml_dict = dict(xml_dict.items() + new_dict.items())
         else:
-            returned_dict = export(getattr(xml_obj, current_element_name), current_element_name)
+            returned_dict = export(xml_obj=getattr(xml_obj, current_element_name), parent_element_name=current_element_name)
             if returned_dict is not None:
                 xml_dict = dict(xml_dict.items() + returned_dict.items())
+    if parent_element_name is None:
+        return xml_dict
     return {parent_element_name: xml_dict}
