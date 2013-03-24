@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Receipt version="1.1">
+    <ReceiptProperties>
+        <ReceiptDate>2013-03-14T10:34:21Z</ReceiptDate>
+        <PurchaseOrderReferenceInformation>
+            <OrderNumber>1231231</OrderNumber>
+            <OrderDate>2013-03-14T10:34:21Z</OrderDate>
+        </PurchaseOrderReferenceInformation>
+    </ReceiptProperties>
+    <ReceiptLineItems></ReceiptLineItems>
+</Receipt>
