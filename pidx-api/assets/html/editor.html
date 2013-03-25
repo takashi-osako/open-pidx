@@ -21,8 +21,13 @@
 					activeClass : "ui-state-default",
 					hoverClass : "ui-state-hover",
 					drop : function(event, ui) {
-						$("<span></span>").html(ui.draggable.text()).appendTo(this);
+						if(ui.draggable.attr("id")=="text box") {
+							$('<span><textarea id="resizable" rows="1" cols="20">text</textarea></span>').appendTo(this);
+						}
 					}
+				});
+				$("#resizable").resizable({
+					handle: "se"
 				});
 			});
 		</script>
@@ -41,8 +46,8 @@
 		</div>
 		<div class="ui-layout-west">
 			<div id="selections">
-				<li>
-					text box
+				<li id="text box">
+					<div>text box</div>
 				</li>
 			</div>
 		</div>
