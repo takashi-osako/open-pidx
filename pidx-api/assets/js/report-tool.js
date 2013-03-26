@@ -20,10 +20,13 @@ $(function () {
 			span_element = $('<span></span>');
 			span_element.attr("id","span_" + my_selection_id);
 			new_element.appendTo(span_element);
-			span_element.appendTo(this)
+			span_element.appendTo(this);
+			$("#" + my_selection_id).resizable();
+			$("#" + my_selection_id).draggable();
 		}
 	});
-
+	
+	
 });
 
 function get_selection_id(id) {
